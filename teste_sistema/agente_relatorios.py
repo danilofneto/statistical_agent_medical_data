@@ -1,612 +1,170 @@
-import os
-from typing import Dict, List, Any, Optional, TypedDict, Annotated
+#
+# Arquivo: agente_relatorios.py (Versão com importação corrigida)
+# Descrição: Agente de IA que usa o LLM para texto e lógica Python para gráficos.
+#
+import json
+import base64
+from io import BytesIO
+from typing import TypedDict, List, Dict
+
+# Libs de Visualização
 import pandas as pd
-import numpy as np
-from dataclasses import dataclass
-from enum import Enum
-
-# LangGraph imports
-from langgraph.graph import Graph, StateGraph, END
-#from langgraph.prebuilt import ToolExecutor
-from langchain.tools import BaseTool
-#from langchain.agents import AgentExecutor
-from langchain_core.messages import BaseMessage, HumanMessage, AIMessage
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_openai import ChatOpenAI
-
-# Statistical and ML imports
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score
-from sklearn.model_selection import train_test_split
-import shap
-import lime
-from lime import lime_tabular
-#import lime.tabular
-from scipy import stats
+import plotly.express as px
+import plotly.io as pio
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-# Causal inference
+# Libs do LangChain e LangGraph
+from langchain_community.llms import Ollama
+# CORREÇÃO: Removida a importação de 'Graph' que não é mais usada.
+from langgraph.graph import StateGraph, END
+
+print("Dependências do Agente de Relatórios importadas com sucesso.")
+
+# --- 1. CONFIGURAÇÃO DO MODELO E PROMPTS ---
+
+# Use um modelo que você tenha disponível, como 'medllama2' ou 'llama3'
+OLLAMA_MODEL = "llama3" 
 try:
-    from dowhy import CausalModel
-    import econml
-except ImportError:
-    print("Para inferência causal, instale: pip install dowhy econml")
+    llm = Ollama(model=OLLAMA_MODEL, temperature=0.1)
+    llm.invoke("Responda com 'OK' se estiver funcionando.")
+    print(f"Agente de Relatórios conectado ao modelo '{OLLAMA_MODEL}' via Ollama.")
+except Exception as e:
+    print(f"ERRO: Não foi possível conectar ao Ollama. Verifique se ele está em execução e se o modelo '{OLLAMA_MODEL}' foi baixado (`ollama run {OLLAMA_MODEL}`).")
+    exit()
 
-# Probabilistic programming
-try:
-    import pymc as pm
-    import arviz as az
-except ImportError:
-    print("Para programação probabilística, instale: pip install pymc arviz")
+# PROMPT REFORÇADO (Nó 1): Instruções mais diretas para o resumo narrativo.
+MASTER_PROMPT_TEMPLATE = """ATENÇÃO: Sua resposta deve ser exclusivamente em Português do Brasil.
 
-class AnalysisType(Enum):
-    DESCRIPTIVE = "descriptive"
-    PREDICTIVE = "predictive"
-    CAUSAL = "causal"
-    PROBABILISTIC = "probabilistic"
+Você é um assistente de IA especialista em medicina. Sua única tarefa é gerar um resumo narrativo a partir dos dados clínicos em JSON abaixo. Siga estritamente a estrutura de formatação com os títulos "Resumo Geral", "Sinais Vitais", e "Resultados Laboratoriais".
 
-@dataclass
-class StatisticalResult:
-    analysis_type: AnalysisType
-    results: Dict[str, Any]
-    interpretation: str
-    confidence: float
-    recommendations: List[str]
-    explainability: Dict[str, Any]
+**DADOS CLÍNICOS:**
+```json
+{clinical_data}
+```
+
+**RELATÓRIO GERADO:**
+"""
+
+# --- 2. DEFINIÇÃO DAS FERRAMENTAS DE VISUALIZAÇÃO ---
+
+def create_interactive_line_chart(data: dict, title: str) -> str:
+    """Cria um gráfico de linhas interativo com Plotly e retorna como HTML."""
+    try:
+        df = pd.DataFrame(data)
+        x_axis = df.columns[0]
+        y_axes = df.columns[1:]
+        fig = px.line(df, x=x_axis, y=y_axes, title=title, markers=True, template="plotly_white")
+        fig.update_layout(legend_title_text='Métricas')
+        return pio.to_html(fig, full_html=False, include_plotlyjs='cdn')
+    except Exception as e:
+        return f"<p><i>Erro ao gerar gráfico de linhas: {e}</i></p>"
+
+def create_static_bar_chart(data: dict, title: str) -> str:
+    """Cria um gráfico de barras estático com Seaborn e retorna como uma tag <img> em base64."""
+    try:
+        df = pd.DataFrame(list(data.items()), columns=['Métrica', 'Valor'])
+        plt.figure(figsize=(8, 5))
+        sns.barplot(data=df, x='Métrica', y='Valor')
+        plt.title(title)
+        plt.ylabel("Valor")
+        plt.xticks(rotation=15, ha='right')
+        buf = BytesIO()
+        plt.savefig(buf, format="png", bbox_inches='tight')
+        plt.close()
+        data_b64 = base64.b64encode(buf.getbuffer()).decode("ascii")
+        return f'<img src="data:image/png;base64,{data_b64}" alt="{title}"/>'
+    except Exception as e:
+        return f"<p><i>Erro ao gerar gráfico de barras: {e}</i></p>"
+
+
+# --- 3. DEFINIÇÃO DO AGENTE COM LANGGRAPH (ARQUITETURA SIMPLIFICADA) ---
 
 class AgentState(TypedDict):
-    messages: Annotated[List[BaseMessage], "The messages in the conversation"]
-    data: Optional[pd.DataFrame]
-    analysis_request: Optional[Dict[str, Any]]
-    current_analysis: Optional[AnalysisType]
-    results: Optional[StatisticalResult]
-    models: Dict[str, Any]
-    next_action: Optional[str]
+    clinical_data: Dict
+    summary_text: str
+    visualizations: List[str]
+    final_report: str
 
-# CORREÇÃO 1: Adicionar anotações de tipo aos atributos name e description
-class DataValidationTool(BaseTool):
-    name: str = "data_validation"
-    description: str = "Valida e prepara dados epidemiológicos para análise"
-    
-    def _run(self, data: pd.DataFrame) -> Dict[str, Any]:
-        validation_results = {
-            "shape": data.shape,
-            "missing_values": data.isnull().sum().to_dict(),
-            "data_types": data.dtypes.to_dict(),
-            "outliers": {},
-            "data_quality_score": 0.0
-        }
-        
-        # Detectar outliers usando IQR
-        numeric_cols = data.select_dtypes(include=[np.number]).columns
-        for col in numeric_cols:
-            Q1 = data[col].quantile(0.25)
-            Q3 = data[col].quantile(0.75)
-            IQR = Q3 - Q1
-            outliers = data[(data[col] < Q1 - 1.5 * IQR) | (data[col] > Q3 + 1.5 * IQR)]
-            validation_results["outliers"][col] = len(outliers)
-        
-        # Score de qualidade dos dados
-        if data.shape[0] > 0 and data.shape[1] > 0:  # CORREÇÃO: Evitar divisão por zero
-            missing_ratio = data.isnull().sum().sum() / (data.shape[0] * data.shape[1])
-            outlier_ratio = sum(validation_results["outliers"].values()) / data.shape[0] if data.shape[0] > 0 else 0
-            validation_results["data_quality_score"] = 1.0 - (missing_ratio + outlier_ratio) / 2
-        
-        return validation_results
+def analysis_node(state: AgentState):
+    """Nó 1: Analisa os dados e gera o resumo em texto com o LLM."""
+    print(">>> [Agente de Relatórios - Nó 1] Analisando dados...")
+    prompt = MASTER_PROMPT_TEMPLATE.format(clinical_data=json.dumps(state['clinical_data']))
+    summary = llm.invoke(prompt)
+    return {"summary_text": summary.strip()}
 
-class DescriptiveAnalysisTool(BaseTool):
-    name: str = "descriptive_analysis"
-    description: str = "Realiza análise estatística descritiva de dados epidemiológicos"
-    
-    def _run(self, data: pd.DataFrame, target_var: Optional[str] = None) -> Dict[str, Any]:
-        results = {
-            "summary_stats": data.describe().to_dict(),
-            "correlations": data.corr().to_dict() if len(data.select_dtypes(include=[np.number]).columns) > 1 else {},
-            "distribution_tests": {},
-            "clinical_insights": []
-        }
-        
-        # Testes de normalidade para variáveis numéricas
-        numeric_cols = data.select_dtypes(include=[np.number]).columns
-        for col in numeric_cols:
-            if len(data[col].dropna()) > 3:
-                shapiro_stat, shapiro_p = stats.shapiro(data[col].dropna()[:5000])  # Limite para performance
-                results["distribution_tests"][col] = {
-                    "shapiro_stat": float(shapiro_stat),  # CORREÇÃO: Converter para float nativo
-                    "shapiro_p": float(shapiro_p),
-                    "is_normal": shapiro_p > 0.05
-                }
-        
-        # Insights clínicos baseados em padrões epidemiológicos
-        if target_var and target_var in data.columns:
-            target_distribution = data[target_var].value_counts()
-            prevalence = target_distribution.get(1, 0) / len(data) if data[target_var].dtype in ['int64', 'bool'] else None
-            if prevalence:
-                results["clinical_insights"].append(f"Prevalência da condição: {prevalence:.2%}")
-        
-        return results
+def deterministic_visualization_node(state: AgentState):
+    """Nó 2: Gera gráficos de forma determinística com base na estrutura dos dados."""
+    print(">>> [Agente de Relatórios - Nó 2] Gerando gráficos...")
+    visualizations = []
+    data = state.get("clinical_data", {})
 
-class PredictiveModelingTool(BaseTool):
-    name: str = "predictive_modeling"
-    description: str = "Desenvolve e avalia modelos preditivos para diagnóstico médico"
-    
-    def _run(self, data: pd.DataFrame, target_col: str, model_type: str = "all") -> Dict[str, Any]:
-        if target_col not in data.columns:
-            return {"error": f"Coluna alvo '{target_col}' não encontrada"}
-        
-        # Preparação dos dados
-        X = data.drop(columns=[target_col])
-        X = pd.get_dummies(X, drop_first=True)  # Encoding de variáveis categóricas
-        y = data[target_col]
-        
-        # CORREÇÃO: Verificar se há dados suficientes
-        if len(X) < 10:
-            return {"error": "Dados insuficientes para modelagem"}
-        
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
-        
-        models = {}
-        results = {}
-        
-        # Definir modelos
-        if model_type in ["all", "logistic"]:
-            models["logistic_regression"] = LogisticRegression(random_state=42, max_iter=1000)
-        if model_type in ["all", "tree"]:
-            models["decision_tree"] = DecisionTreeClassifier(random_state=42)
-        if model_type in ["all", "forest"]:
-            models["random_forest"] = RandomForestClassifier(random_state=42, n_estimators=100)
-        
-        # Treinar e avaliar modelos
-        for name, model in models.items():
-            try:
-                model.fit(X_train, y_train)
-                y_pred = model.predict(X_test)
-                y_pred_proba = model.predict_proba(X_test)[:, 1] if hasattr(model, 'predict_proba') else None
-                
-                results[name] = {
-                    "classification_report": classification_report(y_test, y_pred, output_dict=True),
-                    "confusion_matrix": confusion_matrix(y_test, y_pred).tolist(),
-                    "auc_score": float(roc_auc_score(y_test, y_pred_proba)) if y_pred_proba is not None else None,
-                    "feature_importance": None
-                }
-                
-                # Feature importance
-                if hasattr(model, 'feature_importances_'):
-                    importance_df = pd.DataFrame({
-                        'feature': X.columns,
-                        'importance': model.feature_importances_
-                    }).sort_values('importance', ascending=False)
-                    results[name]["feature_importance"] = importance_df.head(10).to_dict('records')
-            except Exception as e:
-                results[name] = {"error": str(e)}
-        
-        return {"models": models, "results": results, "feature_names": X.columns.tolist()}
+    if "sinais_vitais" in data and isinstance(data["sinais_vitais"], dict):
+        visualizations.append(create_interactive_line_chart(data["sinais_vitais"], "Evolução dos Sinais Vitais"))
 
-class ExplainabilityTool(BaseTool):
-    name: str = "explainability_analysis"
-    description: str = "Aplica técnicas de XAI para interpretabilidade dos modelos"
-    
-    def _run(self, model, X_train: pd.DataFrame, X_test: pd.DataFrame, 
-             feature_names: List[str], instance_idx: int = 0) -> Dict[str, Any]:
-        
-        explanations = {}
-        
-        try:
-            # SHAP Explanations
-            if hasattr(model, 'predict_proba'):
-                explainer = shap.Explainer(model, X_train)
-                shap_values = explainer(X_test.iloc[:min(100, len(X_test))])  # Limite para performance
-                
-                explanations["shap"] = {
-                    "global_importance": dict(zip(feature_names, np.abs(shap_values.values).mean(0).tolist())),  # CORREÇÃO: converter para lista
-                    "local_explanation": dict(zip(feature_names, shap_values.values[instance_idx].tolist())) if instance_idx < len(shap_values.values) else {}
-                }
-        except Exception as e:
-            explanations["shap_error"] = str(e)
-        
-        try:
-            # LIME Explanations
-            explainer = lime_tabular.LimeTabularExplainer(
-                X_train.values,
-                feature_names=feature_names,
-                class_names=['Negativo', 'Positivo'],
-                mode='classification'
-            )
-            
-            if instance_idx < len(X_test):
-                lime_exp = explainer.explain_instance(
-                    X_test.iloc[instance_idx].values,
-                    model.predict_proba,
-                    num_features=min(10, len(feature_names))
-                )
-                
-                explanations["lime"] = {
-                    "local_explanation": dict(lime_exp.as_list()),
-                    "score": float(lime_exp.score)  # CORREÇÃO: converter para float
-                }
-        except Exception as e:
-            explanations["lime_error"] = str(e)
-        
-        return explanations
+    if "labs" in data and isinstance(data["labs"], dict):
+        visualizations.append(create_static_bar_chart(data["labs"], "Resultados Laboratoriais"))
 
-class CausalInferenceTool(BaseTool):
-    name: str = "causal_inference"
-    description: str = "Realiza análise de inferência causal para identificar relações causais"
-    
-    def _run(self, data: pd.DataFrame, treatment: str, outcome: str, 
-             confounders: List[str] = None) -> Dict[str, Any]:
-        
-        try:
-            # Configurar modelo causal
-            causal_model = CausalModel(
-                data=data,
-                treatment=treatment,
-                outcome=outcome,
-                common_causes=confounders or []
-            )
-            
-            # Identificar efeito causal
-            identified_estimand = causal_model.identify_effect(proceed_when_unidentifiable=True)
-            
-            # Estimar efeito causal
-            estimate = causal_model.estimate_effect(
-                identified_estimand,
-                method_name="backdoor.propensity_score_matching"
-            )
-            
-            # Teste de robustez
-            refutation = causal_model.refute_estimate(
-                identified_estimand,
-                estimate,
-                method_name="random_common_cause"
-            )
-            
-            return {
-                "identified_estimand": str(identified_estimand),
-                "causal_effect": float(estimate.value),  # CORREÇÃO: converter para float
-                "confidence_interval": [float(estimate.value - 1.96 * estimate.stderr), 
-                                      float(estimate.value + 1.96 * estimate.stderr)],
-                "p_value": float(estimate.p_value) if estimate.p_value else None,
-                "refutation_test": float(refutation.new_effect) if refutation.new_effect else None
-            }
-            
-        except Exception as e:
-            return {"error": f"Erro na análise causal: {str(e)}"}
+    return {"visualizations": visualizations}
 
-class StatisticalAgent:
-    def __init__(self, llm_model: str = "gpt-4"):
-        self.llm = ChatOpenAI(model=llm_model, temperature=0.1)
-        self.tools = {
-            "data_validation": DataValidationTool(),
-            "descriptive_analysis": DescriptiveAnalysisTool(),
-            "predictive_modeling": PredictiveModelingTool(),
-            "explainability_analysis": ExplainabilityTool(),
-            "causal_inference": CausalInferenceTool()
-        }
-        self.graph = self._create_graph()
-    
-    def _create_graph(self) -> StateGraph:
-        # Definir o grafo de estados
-        workflow = StateGraph(AgentState)
-        
-        # Adicionar nós
-        workflow.add_node("analyze_request", self._analyze_request)
-        workflow.add_node("validate_data", self._validate_data)
-        workflow.add_node("descriptive_analysis", self._descriptive_analysis)
-        workflow.add_node("predictive_modeling", self._predictive_modeling)
-        workflow.add_node("causal_analysis", self._causal_analysis)
-        workflow.add_node("generate_explanation", self._generate_explanation)
-        workflow.add_node("synthesize_results", self._synthesize_results)
-        
-        # Definir fluxo
-        workflow.set_entry_point("analyze_request")
-        
-        workflow.add_conditional_edges(
-            "analyze_request",
-            self._route_analysis,
-            {
-                "validate": "validate_data",
-                "descriptive": "descriptive_analysis",
-                "predictive": "predictive_modeling",
-                "causal": "causal_analysis",
-                "end": END
-            }
-        )
-        
-        workflow.add_edge("validate_data", "descriptive_analysis")
-        workflow.add_edge("descriptive_analysis", "generate_explanation")
-        workflow.add_edge("predictive_modeling", "generate_explanation")
-        workflow.add_edge("causal_analysis", "generate_explanation")
-        workflow.add_edge("generate_explanation", "synthesize_results")
-        workflow.add_edge("synthesize_results", END)
-        
-        return workflow.compile()
-    
-    def _analyze_request(self, state: AgentState) -> AgentState:
-        """Analisa a solicitação do usuário e determina o tipo de análise necessária"""
-        last_message = state["messages"][-1].content if state["messages"] else ""
-        
-        # Prompt para classificar o tipo de análise
-        prompt = ChatPromptTemplate.from_template("""
-        Analise a seguinte solicitação e determine o tipo de análise estatística necessária:
-        
-        Solicitação: {request}
-        
-        Tipos disponíveis:
-        - descriptive: Análise estatística descritiva
-        - predictive: Modelagem preditiva para diagnóstico
-        - causal: Inferência causal
-        - validation: Validação de dados
-        
-        Responda apenas com o tipo (uma palavra).
-        """)
-        
-        response = self.llm.invoke(prompt.format(request=last_message))
-        analysis_type = response.content.strip().lower()
-        
-        # Extrair parâmetros da solicitação
-        analysis_request = {
-            "type": analysis_type,
-            "target_variable": None,
-            "features": [],
-            "treatment": None,
-            "outcome": None
-        }
-        
-        state["analysis_request"] = analysis_request
-        # CORREÇÃO: Verificar se o tipo é válido antes de criar enum
-        try:
-            state["current_analysis"] = AnalysisType(analysis_type) if analysis_type in [e.value for e in AnalysisType] else AnalysisType.DESCRIPTIVE
-        except ValueError:
-            state["current_analysis"] = AnalysisType.DESCRIPTIVE
-        
-        return state
-    
-    def _route_analysis(self, state: AgentState) -> str:
-        """Determina o próximo passo baseado no tipo de análise"""
-        analysis_type = state["current_analysis"]
-        
-        # CORREÇÃO: Verificar corretamente se data existe
-        if state.get("data") is None:
-            return "validate"
-        elif analysis_type == AnalysisType.DESCRIPTIVE:
-            return "descriptive"
-        elif analysis_type == AnalysisType.PREDICTIVE:
-            return "predictive"
-        elif analysis_type == AnalysisType.CAUSAL:
-            return "causal"
-        else:
-            return "descriptive"
-    
-    def _validate_data(self, state: AgentState) -> AgentState:
-        """Valida os dados fornecidos"""
-        if state.get("data") is not None:
-            validation_results = self.tools["data_validation"]._run(state["data"])
-            state["results"] = StatisticalResult(
-                analysis_type=AnalysisType.DESCRIPTIVE,
-                results=validation_results,
-                interpretation="Validação dos dados concluída",
-                confidence=validation_results["data_quality_score"],
-                recommendations=[],
-                explainability={}
-            )
-        return state
-    
-    def _descriptive_analysis(self, state: AgentState) -> AgentState:
-        """Realiza análise descritiva"""
-        if state.get("data") is not None:
-            results = self.tools["descriptive_analysis"]._run(
-                state["data"],
-                state["analysis_request"].get("target_variable")
-            )
-            
-            state["results"] = StatisticalResult(
-                analysis_type=AnalysisType.DESCRIPTIVE,
-                results=results,
-                interpretation="Análise descritiva concluída",
-                confidence=0.95,
-                recommendations=results.get("clinical_insights", []),
-                explainability={}
-            )
-        return state
-    
-    def _predictive_modeling(self, state: AgentState) -> AgentState:
-        """Desenvolve modelos preditivos"""
-        if state.get("data") is not None and state["analysis_request"].get("target_variable"):
-            modeling_results = self.tools["predictive_modeling"]._run(
-                state["data"],
-                state["analysis_request"]["target_variable"]
-            )
-            
-            # Gerar explicações para o melhor modelo
-            if modeling_results.get("models"):
-                # CORREÇÃO: Melhor tratamento de erro ao encontrar melhor modelo
-                best_model_name = None
-                best_auc = 0
-                
-                for model_name, results in modeling_results["results"].items():
-                    if isinstance(results, dict) and "auc_score" in results:
-                        auc = results.get("auc_score", 0) or 0
-                        if auc > best_auc:
-                            best_auc = auc
-                            best_model_name = model_name
-                
-                if best_model_name:
-                    best_model = modeling_results["models"][best_model_name]
-                    
-                    # Preparar dados para explicabilidade
-                    X = state["data"].drop(columns=[state["analysis_request"]["target_variable"]])
-                    X = pd.get_dummies(X, drop_first=True)
-                    X_train, X_test, _, _ = train_test_split(
-                        X, state["data"][state["analysis_request"]["target_variable"]], 
-                        test_size=0.2, random_state=42
-                    )
-                    
-                    explanations = self.tools["explainability_analysis"]._run(
-                        best_model, X_train, X_test, modeling_results["feature_names"]
-                    )
-                    
-                    state["models"] = modeling_results["models"]
-                    state["results"] = StatisticalResult(
-                        analysis_type=AnalysisType.PREDICTIVE,
-                        results=modeling_results["results"],
-                        interpretation=f"Melhor modelo: {best_model_name}",
-                        confidence=best_auc,
-                        recommendations=[f"Modelo {best_model_name} recomendado para uso clínico"],
-                        explainability=explanations
-                    )
-        return state
-    
-    def _causal_analysis(self, state: AgentState) -> AgentState:
-        """Realiza análise de inferência causal"""
-        request = state["analysis_request"]
-        if (state.get("data") is not None and 
-            request.get("treatment") and 
-            request.get("outcome")):
-            
-            causal_results = self.tools["causal_inference"]._run(
-                state["data"],
-                request["treatment"],
-                request["outcome"]
-            )
-            
-            state["results"] = StatisticalResult(
-                analysis_type=AnalysisType.CAUSAL,
-                results=causal_results,
-                interpretation="Análise causal concluída",
-                confidence=0.8,
-                recommendations=["Considerar fatores de confusão adicionais"],
-                explainability={}
-            )
-        return state
-    
-    def _generate_explanation(self, state: AgentState) -> AgentState:
-        """Gera explicações interpretáveis dos resultados"""
-        if state.get("results"):
-            # Usar LLM para gerar explicação mais detalhada
-            prompt = ChatPromptTemplate.from_template("""
-            Como especialista em estatística médica, interprete os seguintes resultados para profissionais de saúde:
-            
-            Tipo de análise: {analysis_type}
-            Resultados: {results}
-            Explicabilidade: {explainability}
-            
-            Forneça:
-            1. Interpretação clínica clara
-            2. Limitações e considerações
-            3. Recomendações práticas
-            
-            Mantenha linguagem técnica mas acessível para médicos.
-            """)
-            
-            response = self.llm.invoke(prompt.format(
-                analysis_type=state["results"].analysis_type.value,
-                results=str(state["results"].results),
-                explainability=str(state["results"].explainability)
-            ))
-            
-            # Atualizar interpretação
-            state["results"].interpretation = response.content
-            
-        return state
-    
-    def _synthesize_results(self, state: AgentState) -> AgentState:
-        """Sintetiza e finaliza os resultados"""
-        if state.get("results"):
-            # Adicionar mensagem final com resultados
-            final_message = AIMessage(content=f"""
-## Análise Estatística Concluída
+def report_compilation_node(state: AgentState):
+    """Nó 3: Compila o texto e as visualizações em um relatório HTML final."""
+    print(">>> [Agente de Relatórios - Nó 3] Compilando relatório...")
+    summary_html = "<br>".join(state.get('summary_text', '').splitlines())
+    visualizations_html = "".join(state.get('visualizations', []))
 
-**Tipo de Análise:** {state["results"].analysis_type.value.title()}
+    report_html = f"""<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório Clínico</title>
+    <style>
+        body {{ font-family: sans-serif; line-height: 1.6; margin: 0 auto; max-width: 900px; padding: 20px; }}
+        h1, h2 {{ color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 5px;}}
+        .report-section {{ margin-bottom: 30px; padding: 20px; background-color: #f8f9f9; border: 1px solid #d5dbdb; border-radius: 8px; }}
+        img {{ max-width: 100%; height: auto; display: block; margin: 20px auto; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }}
+        .plotly-graph-div {{ margin: 20px auto; }}
+    </style>
+</head>
+<body>
+    <h1>Relatório Clínico Gerado por IA</h1>
+    <div class="report-section">
+        <h2>Análise Narrativa</h2>
+        <p>{summary_html}</p>
+    </div>
+    <div class="report-section">
+        <h2>Visualizações de Dados</h2>
+        {visualizations_html if visualizations_html else "<p><i>Nenhuma visualização foi gerada.</i></p>"}
+    </div>
+</body>
+</html>"""
+    return {"final_report": report_html}
 
-**Interpretação:**
-{state["results"].interpretation}
+# Construção do Grafo
+workflow = StateGraph(AgentState)
+workflow.add_node("analise", analysis_node)
+workflow.add_node("geracao_determinista_viz", deterministic_visualization_node)
+workflow.add_node("compilacao", report_compilation_node)
 
-**Confiança:** {state["results"].confidence:.2%}
+# Definição das Arestas
+workflow.set_entry_point("analise")
+workflow.add_edge("analise", "geracao_determinista_viz")
+workflow.add_edge("geracao_determinista_viz", "compilacao")
+workflow.add_edge("compilacao", END)
 
-**Recomendações:**
-{chr(10).join([f"• {rec}" for rec in state["results"].recommendations])}
+# Compilação do App
+app = workflow.compile()
+print("Grafo do Agente de Relatórios compilado com sucesso.")
 
-**Transparência e Explicabilidade:**
-Esta análise utilizou técnicas de XAI para garantir interpretabilidade dos resultados.
-            """)
-            
-            state["messages"].append(final_message)
-        
-        return state
-    
-    def run_analysis(self, data: pd.DataFrame, request: str) -> Dict[str, Any]:
-        """Executa análise estatística completa"""
-        initial_state: AgentState = {
-            "messages": [HumanMessage(content=request)],
-            "data": data,
-            "analysis_request": None,
-            "current_analysis": None,
-            "results": None,
-            "models": {},
-            "next_action": None
-        }
-        
-        # Executar o grafo
-        final_state = self.graph.invoke(initial_state)
-        
-        return {
-            "results": final_state.get("results"),
-            "models": final_state.get("models", {}),
-            "messages": [msg.content for msg in final_state.get("messages", [])]
-        }
+# --- 4. FUNÇÃO PRINCIPAL PARA SER CHAMADA PELO main.py ---
 
-# Exemplo de uso
-def example_usage():
-    """Exemplo de como usar o Agente Estatístico"""
-    
-    # Criar dados de exemplo (dados epidemiológicos simulados)
-    np.random.seed(42)
-    n_patients = 1000
-    
-    data = pd.DataFrame({
-        'idade': np.random.normal(65, 15, n_patients),
-        'pressao_sistolica': np.random.normal(140, 20, n_patients),
-        'colesterol': np.random.normal(200, 40, n_patients),
-        'diabetes': np.random.binomial(1, 0.3, n_patients),
-        'fumante': np.random.binomial(1, 0.25, n_patients),
-        'exercicio_regular': np.random.binomial(1, 0.4, n_patients),
-    })
-    
-    # Criar variável alvo (doença cardiovascular)
-    cardiovascular_risk = (
-        0.02 * data['idade'] + 
-        0.01 * data['pressao_sistolica'] + 
-        0.005 * data['colesterol'] + 
-        0.5 * data['diabetes'] + 
-        0.3 * data['fumante'] - 
-        0.2 * data['exercicio_regular'] - 5
-    )
-    data['doenca_cardiovascular'] = (cardiovascular_risk + np.random.normal(0, 1, n_patients) > 0).astype(int)
-    
-    # Inicializar agente
-    agent = StatisticalAgent()
-    
-    # Exemplo de análise preditiva
-    request = "Desenvolva um modelo preditivo para diagnóstico de doença cardiovascular usando todas as variáveis disponíveis"
-    
-    results = agent.run_analysis(data, request)
-    
-    print("=== RESULTADOS DA ANÁLISE ===")
-    for message in results["messages"]:
-        print(message)
-        print("-" * 50)
-    
-    return results
+def generate_clinical_report(patient_data: dict) -> str:
+    """Função principal que encapsula o agente LangGraph."""
+    initial_state = {"clinical_data": patient_data}
+    final_state = app.invoke(initial_state)
+    return final_state.get("final_report", "<h1>Erro: Não foi possível gerar o relatório.</h1>")
 
 if __name__ == "__main__":
-    # Para executar o exemplo, descomente a linha abaixo
-    # results = example_usage()
-    print("Agente Estatístico criado com sucesso!")
-    print("\nPara usar:")
-    print("1. Configure sua chave da OpenAI: os.environ['OPENAI_API_KEY'] = 'sua_chave'")
-    print("2. Instale dependências: pip install langgraph langchain-openai scikit-learn shap lime dowhy econml pymc arviz")
-    print("3. Execute example_usage() para ver um exemplo completo")
+    # Este bloco serve apenas para testar o agente de forma isolada.
+    print("Este script contém a função 'generate_clinical_report'.")
+    print("Para testar o sistema completo, execute 'main.py'.")
