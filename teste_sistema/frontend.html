@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Análise Clínica com IA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #result-content iframe {
+            width: 100%;
+            height: 500px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+        
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-700">Plataforma de Análise Clínica com IA</h1>
+            <p class="text-gray-500 mt-2">Faça perguntas, anexe exames de imagem e obtenha insights dos agentes especialistas.</p>
+        </header>
+
+        <!-- Seção de Input do Usuário -->
+        <div class="bg-white p-6 rounded-xl shadow-lg mb-8">
+            <div class="mb-4">
+                <label for="prompt-input" class="block text-lg font-semibold text-gray-600 mb-2">Sua Solicitação:</label>
+                <textarea id="prompt-input" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" placeholder="Ex: 'Analise a imagem de raio-x e verifique se há sinais de pneumonia.' ou 'Gere um relatório para o paciente com os dados...'"></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label for="image-upload" class="block text-lg font-semibold text-gray-600 mb-2">Anexar Imagem (Opcional):</label>
+                <div class="flex items-center space-x-4">
+                    <input type="file" id="image-upload" class="hidden" accept="image/*">
+                    <label for="image-upload" class="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors flex items-center">
+                        <i class="fas fa-upload mr-2"></i> Escolher Arquivo
+                    </label>
+                    <span id="file-name" class="text-gray-500">Nenhum arquivo selecionado.</span>
+                </div>
+            </div>
+            
+            <div id="image-preview-container" class="hidden mt-4 text-center">
+                <img id="image-preview" class="max-w-xs mx-auto rounded-lg shadow-md" alt="Pré-visualização da Imagem">
+            </div>
+
+            <button id="submit-button" class="w-full mt-6 bg-green-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-700 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                <i class="fas fa-paper-plane mr-2"></i> Enviar para Análise
+            </button>
+        </div>
+
+        <!-- Seção de Saída do Modelo -->
+        <div id="output-container" class="bg-white p-6 rounded-xl shadow-lg hidden">
+            <h2 class="text-2xl font-bold text-gray-700 border-b pb-2 mb-4">Resultado da Análise</h2>
+            <div id="loader" class="flex justify-center items-center py-8">
+                <div class="loader"></div>
+                <p class="ml-4 text-gray-600">Processando... O Agente Organizador está roteando sua solicitação.</p>
+            </div>
+            <div id="result-content" class="text-gray-800 space-y-4">
+                <!-- O conteúdo da resposta será inserido aqui -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const promptInput = document.getElementById('prompt-input');
+        const imageUpload = document.getElementById('image-upload');
+        const fileNameSpan = document.getElementById('file-name');
+        const imagePreviewContainer = document.getElementById('image-preview-container');
+        const imagePreview = document.getElementById('image-preview');
+        const submitButton = document.getElementById('submit-button');
+        const outputContainer = document.getElementById('output-container');
+        const loader = document.getElementById('loader');
+        const resultContent = document.getElementById('result-content');
+
+        let uploadedImageBase64 = null;
+
+        // Lida com a seleção de imagem
+        imageUpload.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                fileNameSpan.textContent = file.name;
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    // Armazena apenas o conteúdo base64, sem o prefixo
+                    uploadedImageBase64 = e.target.result.split(',')[1];
+                    imagePreview.src = e.target.result;
+                    imagePreviewContainer.classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            } else {
+                fileNameSpan.textContent = 'Nenhum arquivo selecionado.';
+                imagePreviewContainer.classList.add('hidden');
+                uploadedImageBase64 = null;
+            }
+        });
+
+        // Lida com o envio do formulário
+        submitButton.addEventListener('click', async () => {
+            const prompt = promptInput.value.trim();
+            if (!prompt && !uploadedImageBase64) {
+                alert('Por favor, digite uma solicitação ou anexe uma imagem.');
+                return;
+            }
+
+            outputContainer.classList.remove('hidden');
+            loader.classList.remove('hidden');
+            resultContent.innerHTML = '';
+
+            try {
+                // *** CHAMADA REAL AO BACKEND ***
+                const result = await chamarBackendReal(prompt, uploadedImageBase64);
+                renderResult(result);
+            } catch (error) {
+                renderError(error);
+            } finally {
+                loader.classList.add('hidden');
+            }
+        });
+
+        /**
+         * FUNÇÃO ATUALIZADA: FAZ UMA CHAMADA DE API REAL PARA O SERVIDOR FLASK
+         */
+        async function chamarBackendReal(prompt, imageBase64) {
+            console.log("Enviando solicitação para o backend...");
+            const backendUrl = 'http://127.0.0.1:5000/analyze';
+
+            const response = await fetch(backendUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    prompt: prompt,
+                    imageBase64: imageBase64,
+                }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || `Erro do servidor: ${response.status}`);
+            }
+
+            return response.json();
+        }
+
+        // Renderiza o resultado na tela
+        function renderResult(result) {
+            let html = `<p class="text-sm text-gray-500 mb-4">Resposta do: <strong>${result.agent}</strong></p>`;
+            
+            const data = result.data;
+
+            if (data.answer) {
+                html += `<p>${data.answer}</p>`;
+            }
+            if (data.summary) {
+                html += `<div><h3 class="font-bold mb-1">Resumo da Análise:</h3><p>${data.summary}</p></div>`;
+            }
+            if (data.visualization_b64) {
+                html += `<div class="mt-4"><h3 class="font-bold mb-2">Visualização Gerada:</h3><img src="data:image/png;base64,${data.visualization_b64}" class="mx-auto rounded-lg shadow-md border" alt="Gráfico da Análise"></div>`;
+            }
+            // Se o agente de relatórios retornar um HTML completo
+            if (data.html_report) {
+                 html += `<div class="mt-4"><h3 class="font-bold mb-2">Relatório Clínico Completo:</h3><iframe srcdoc="${data.html_report.replace(/"/g, '&quot;')}"></iframe></div>`;
+            }
+
+
+            resultContent.innerHTML = html;
+        }
+
+        function renderError(error) {
+            resultContent.innerHTML = `<div class="text-red-500"><p><strong>Ocorreu um erro:</strong></p><p>${error.message || 'Não foi possível processar a solicitação.'}</p></div>`;
+        }
+    </script>
+
+</body>
+</html>
