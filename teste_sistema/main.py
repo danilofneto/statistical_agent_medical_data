@@ -1,5 +1,6 @@
 #
 # Arquivo: main.py
+# Descrição: Versão final com depuração e tratamento de erros aprimorados.
 #
 import pandas as pd
 import numpy as np
@@ -11,7 +12,7 @@ import os
 from agente_organizador import AgenteOrganizador
 from agente_estatistico import AgenteEstatistico, salvar_relatorio_html
 from agente_relatorios import generate_clinical_report
-from agente_imagens import AgenteDeImagens # <-- Importando o agente real
+from agente_imagens import AgenteDeImagens 
 
 print("Dependências e agentes importados com sucesso.")
 
@@ -27,8 +28,9 @@ class SistemaMultiAgente:
         self.agente_organizador = AgenteOrganizador(model_name="llama3")
         
         # *** MUDANÇA PRINCIPAL: USA O AGENTE DE IMAGENS REAL ***
-        self.agente_imagens = AgenteDeImagens(model_name="alibayram/medgemma:4b")
-        
+        #self.agente_imagens = AgenteDeImagens(model_name="alibayram/medgemma:4b")
+        #self.agente_imagens = AgenteDeImagens(model_name="llava:7b")  # Usando o modelo Llava 7B como exemplo
+        self.agente_imagens = AgenteDeImagens(model_name="medllama2:7b-q5_1")  # Usando o modelo Llava 7B como exemplo
         dados_simulados = pd.DataFrame({
             'idade': np.random.normal(55, 18, 1000), 'bmi': np.random.normal(26, 5, 1000),
             'smoking': np.random.binomial(1, 0.2, 1000), 'treatment': np.random.binomial(1, 0.5, 1000),

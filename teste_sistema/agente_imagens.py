@@ -18,7 +18,7 @@ class AgenteDeImagens:
     Agente que utiliza um modelo de linguagem e visão para responder perguntas
     sobre imagens médicas (Visual Question Answering - VQA).
     """
-    def __init__(self, model_name: str = "llava:7b"):
+    def __init__(self, model_name: str = "medllama2:7b-q5_1"):
         """
         Inicializa o agente com um modelo multimodal servido pelo Ollama.
 
@@ -128,7 +128,7 @@ if __name__ == "__main__":
 
     # 2. Inicializar o agente
     # Certifique-se de ter o LLaVA rodando no Ollama: `ollama run llava:7b`
-    agente_imagens = AgenteDeImagens(model_name="llava:7b")
+    agente_imagens = AgenteDeImagens(model_name="medllama2:7b-q5_1")
     
     # 3. Definir a tarefa (pergunta)
     pergunta_clinica = "Esta radiografia de tórax parece normal ou há sinais de anormalidades como consolidação ou infiltrados, sugestivos de pneumonia?"
