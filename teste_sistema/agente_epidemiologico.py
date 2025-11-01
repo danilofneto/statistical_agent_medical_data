@@ -1,72 +1,60 @@
 #
 # Arquivo: agente_epidemiologico.py
-# Descrição: Agente que responde a perguntas epidemiológicas usando RAG em dados locais
-# e fallback para busca na web com Tavily.
+# Descrição: Agente com RAG vetorial (FAISS) e RAG estruturado (Pandas/DuckDB).
 #
 import pandas as pd
 import os
 from typing import Dict, List, Any
 
-# Ferramentas de busca e LLMs
+# Ferramentas de busca, LLMs e RAG
 from langchain_community.utilities import DuckDBLoader
 from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain_openai import ChatOpenAI
 from langchain.agents import AgentExecutor, create_react_agent
 from langchain_core.prompts import PromptTemplate
 from langchain_core.tools import Tool
+from langchain_community.vectorstores import FAISS
+from langchain_community.embeddings import SentenceTransformerEmbeddings
 
 print("Dependências do Agente Epidemiológico importadas com sucesso.")
 
 class AgenteEpidemiologico:
     """
-    Agente especializado em responder perguntas epidemiológicas.
-    1. Tenta responder usando uma base de dados local (simulando um RAG).
-    2. Se não encontra uma resposta confiável, busca em fontes médicas na web com Tavily.
+    Agente especializado em responder perguntas epidemiológicas usando três ferramentas:
+    1. RAG Estruturado (Pandas): Para consultas em tabelas locais (ex: 'qual a média de idade?')
+    2. RAG Vetorial (FAISS): Para perguntas conceituais em artigos (ex: 'quais as diretrizes?')
+    3. Busca Externa (Tavily): Para informações da web em tempo real.
     """
-    def __init__(self, dataset_path: str, llm_model: str = "gpt-4o"):
-        """
-        Inicializa o agente com um caminho para o dataset e um modelo de LLM.
-
-        :param dataset_path: Caminho para o arquivo de dados (CSV).
-        :param llm_model: Modelo da OpenAI para usar na síntese das respostas.
-        """
+    def __init__(self, dataset_path: str, vector_index_path: str, llm_model: str = "gpt-4o"):
         if not os.path.exists(dataset_path):
-            raise FileNotFoundError(f"O arquivo de dataset não foi encontrado em: {dataset_path}")
+            raise FileNotFoundError(f"O arquivo de dataset (CSV) não foi encontrado em: {dataset_path}")
+        if not os.path.exists(vector_index_path):
+            raise FileNotFoundError(f"O índice vetorial FAISS não foi encontrado em: {vector_index_path}. Execute 'build_index.py' primeiro.")
             
         self.dataset_path = dataset_path
+        self.vector_index_path = vector_index_path
         self.llm = ChatOpenAI(model=llm_model, temperature=0, api_key=os.getenv("OPENAI_API_KEY"))
         
-        # Ferramenta 1: Buscador em Dados Locais (Simula o RAG)
+        # Ferramenta 1: Buscador em Dados Locais (CSV)
         self.local_db_tool = self._criar_ferramenta_db_local()
         
-        # Ferramenta 2: Buscador Web Confiável (Tavily)
-        self.web_search_tool = TavilySearchResults(
-            max_results=5,
-            #
-            # IMPORTANTE: Você pode adicionar um filtro de busca para focar em sites confiáveis.
-            # search_depth="advanced" # pode ser usado para pesquisas mais profundas
-        )
+        # Ferramenta 2: RAG Vetorial (FAISS)
+        self.rag_tool = self._criar_ferramenta_rag_vetorial()
+        
+        # Ferramenta 3: Buscador Web Confiável (Tavily)
+        self.web_search_tool = TavilySearchResults(max_results=3)
         
         # Cria o agente ReAct que decide qual ferramenta usar
         self.agent_executor = self._criar_agente_executor()
-        print("Agente Epidemiológico inicializado com sucesso.")
+        print("Agente Epidemiológico (com RAG vetorial) inicializado com sucesso.")
 
     def _criar_ferramenta_db_local(self):
-        """
-        Cria uma ferramenta que permite fazer perguntas em linguagem natural (SQL)
-        a um banco de dados DuckDB carregado a partir do CSV.
-        """
-        print(f"Carregando dados de '{self.dataset_path}' para o DuckDB...")
-        loader = DuckDBLoader(self.dataset_path, query=f"SELECT * FROM '{self.dataset_path}'")
-        db = loader.load()
+        """Cria a ferramenta para consultar dados estruturados (CSV/Pandas)."""
+        print(f"Carregando dados de '{self.dataset_path}' para a ferramenta de dados locais...")
         
         def run_query(query: str) -> str:
-            """Executa uma consulta SQL no banco de dados local."""
+            """Executa uma consulta no formato Pandas `query` no CSV."""
             try:
-                # O DuckDBLoader já oferece uma forma de executar queries.
-                # Para uma implementação mais robusta, usaríamos o duckdb diretamente.
-                # Esta é uma simplificação para o agente.
-                # Vamos carregar os dados em um DataFrame para a consulta.
                 df = pd.read_csv(self.dataset_path)
                 result = df.query(query)
                 return f"Resultado da consulta local:\n{result.to_markdown()}"
@@ -74,44 +62,78 @@ class AgenteEpidemiologico:
                 return f"Erro ao executar a consulta local: {e}. Tente uma sintaxe de query do Pandas."
 
         return Tool(
-            name="BuscadorDeDadosEpidemiologicosLocais",
+            name="BuscadorDeDadosLocais",
             func=run_query,
             description="""
-            Use esta ferramenta para responder perguntas que podem ser resolvidas com os dados de saúde locais.
+            Use esta ferramenta para perguntas estatísticas sobre dados locais estruturados (CSV).
             A entrada deve ser uma query no formato do método `query` do Pandas (ex: 'age > 50 and diabetes == 1').
-            NÃO use SQL completo. Use apenas para perguntas sobre prevalência, contagens ou estatísticas
-            descritivas que estão nos dados. Se a pergunta for sobre conhecimento médico geral,
-            não use esta ferramenta.
+            Use apenas para perguntas sobre contagens, médias, prevalências, etc., que estão no CSV.
             """
         )
+
+    def _criar_ferramenta_rag_vetorial(self):
+        """Cria a ferramenta de RAG que busca em documentos (índice FAISS)."""
+        print(f"Carregando índice vetorial FAISS de '{self.vector_index_path}'...")
+        try:
+            # Carrega o modelo de embedding
+            model_name = "pritamdeka/S-PubMedBert-MS-MARCO"
+            embeddings = SentenceTransformerEmbeddings(model_name=model_name)
+            
+            # Carrega o índice FAISS salvo
+            db = FAISS.load_local(self.vector_index_path, embeddings, allow_dangerous_deserialization=True)
+            retriever = db.as_retriever(search_kwargs={"k": 3}) # Retorna os 3 chunks mais relevantes
+            
+            def run_rag_query(query: str) -> str:
+                """Executa uma busca semântica no índice vetorial."""
+                docs = retriever.invoke(query)
+                return f"Contexto encontrado nos documentos locais:\n" + "\n---\n".join([doc.page_content for doc in docs])
+
+            return Tool(
+                name="BuscadorDeArtigosMedicos",
+                func=run_rag_query,
+                description="""
+                Use esta ferramenta para perguntas conceituais ou sobre diretrizes médicas,
+                como 'quais são os sintomas de...', 'qual o tratamento para...', 
+                'o que diz a diretriz sobre...'.
+                Busca em artigos médicos e diretrizes salvas localmente.
+                """
+            )
+        except Exception as e:
+            print(f"ERRO CRÍTICO ao carregar o índice FAISS: {e}")
+            print("Execute 'build_index.py' para criar o índice.")
+            # Retorna uma ferramenta "vazia" para não quebrar o agente
+            return Tool(
+                name="BuscadorDeArtigosMedicos",
+                func=lambda q: "Erro: Índice FAISS não carregado.",
+                description="Erro: Índice FAISS não carregado."
+            )
 
     def _criar_agente_executor(self):
         """
         Cria o agente principal que orquestra o uso das ferramentas.
         """
-        tools = [self.local_db_tool, self.web_search_tool]
+        tools = [self.local_db_tool, self.rag_tool, self.web_search_tool]
         
-        # O prompt ReAct instrui o agente sobre como pensar e qual ferramenta escolher.
         prompt_template = """
-        Você é um assistente de pesquisa epidemiológica de alto nível. Responda à seguinte pergunta da forma mais precisa possível, usando as ferramentas disponíveis.
-        Sua principal prioridade é usar o `BuscadorDeDadosEpidemiologicosLocais` primeiro. Se e somente se essa ferramenta não fornecer uma resposta adequada,
-        ou se a pergunta for sobre conhecimento médico geral que não estaria nos dados locais (como "quais são os sintomas de..."),
-        use a `tavily_search_results` para pesquisar em fontes confiáveis.
-        Ao usar a `tavily_search_results`, você pode refinar sua busca para sites confiáveis como `site:who.int`, `site:cdc.gov`, `site:thelancet.com`.
+        Você é um assistente de pesquisa epidemiológica de alto nível. Responda à seguinte pergunta da forma mais precisa possível.
+        Você tem três ferramentas à sua disposição:
 
-        Ferramentas disponíveis:
-        {tools}
+        1. `BuscadorDeDadosLocais`: Use para perguntas estatísticas sobre dados locais (ex: 'qual a média de idade?', 'quantos pacientes fumam?'). A entrada deve ser uma query Pandas.
+        2. `BuscadorDeArtigosMedicos`: Use para perguntas conceituais ou sobre diretrizes (ex: 'quais os sintomas de...', 'qual o tratamento recomendado para...').
+        3. `tavily_search_results`: Use como último recurso se as ferramentas locais não fornecerem uma resposta, ou para informações muito recentes (ex: 'notícias de hoje').
+
+        **Prioridade:** Tente sempre usar `BuscadorDeDadosLocais` ou `BuscadorDeArtigosMedicos` primeiro.
 
         Use o seguinte formato:
 
         Pergunta: a pergunta de entrada que você precisa responder
-        Pensamento: você deve sempre pensar sobre o que fazer.
+        Pensamento: Devo analisar a pergunta. É uma consulta estatística (BuscadorDeDadosLocais), uma consulta conceitual (BuscadorDeArtigosMedicos) ou uma busca geral (tavily)?
         Ação: a ação a ser tomada, deve ser uma de [{tool_names}]
         Entrada da Ação: a entrada para a ação
         Observação: o resultado da ação
         ... (este Pensamento/Ação/Entrada/Observação pode se repetir N vezes)
         Pensamento: Agora eu sei a resposta final
-        Resposta Final: a resposta final para a pergunta original. Sempre cite suas fontes (seja 'dados locais' ou uma URL da web).
+        Resposta Final: a resposta final para a pergunta original. Sempre cite sua fonte (seja 'Dados Locais', 'Artigos Médicos Locais' ou uma URL da web).
 
         Comece!
 
@@ -134,7 +156,7 @@ class AgenteEpidemiologico:
             return {
                 "pergunta": pergunta,
                 "resposta": resultado.get("output", "Não foi possível obter uma resposta."),
-                "fonte": "Híbrida (Dados Locais e/ou Web)"
+                "fonte": "Híbrida (IA + Ferramentas)"
             }
         except Exception as e:
             print(f"Ocorreu um erro durante a análise epidemiológica: {e}")
@@ -153,43 +175,40 @@ if __name__ == '__main__':
         print("ERRO: Configure suas variáveis de ambiente OPENAI_API_KEY e TAVILY_API_KEY.")
         exit()
 
-    # 1. Preparar um dataset de exemplo (iremos criar um sintético para facilitar)
-    print("Criando dataset epidemiológico sintético de exemplo...")
-    from sklearn.datasets import make_classification
-    X, y = make_classification(
-        n_samples=1000, n_features=5, n_informative=3, n_classes=2, random_state=42
-    )
-    df = pd.DataFrame(X, columns=['age', 'bmi', 'blood_pressure', 'cholesterol', 'genetic_marker'])
-    df['diabetes'] = y
-    df['age'] = (df['age'] * 15 + 50).astype(int) # Escala de idade para algo realista
-    
+    # 1. Preparar os dados (Execute build_index.py primeiro!)
     dataset_filename = "synthetic_diabetes_data.csv"
-    df.to_csv(dataset_filename, index=False)
-    print(f"Dataset salvo como '{dataset_filename}'.")
+    index_folder = "faiss_index"
+
+    if not os.path.exists(index_folder) or not os.path.exists(dataset_filename):
+        print("ERRO: Arquivos de dados ou índice não encontrados.")
+        print("Por favor, execute 'build_index.py' e o script anterior para criar 'synthetic_diabetes_data.csv' primeiro.")
+        exit()
     
     # 2. Inicializar o agente
-    agente = AgenteEpidemiologico(dataset_path=dataset_filename)
+    agente = AgenteEpidemiologico(dataset_path=dataset_filename, vector_index_path=index_folder)
     
-    # 3. Fazer perguntas
+    # 3. Fazer perguntas de teste
     
-    # Pergunta 1: Pode ser respondida pelos dados locais
+    # Pergunta 1: Teste do RAG Estruturado (Pandas)
     print("\n" + "="*50)
-    pergunta_local = "Qual é a idade média dos pacientes com diabetes no dataset?"
-    # Para o nosso buscador simplificado, precisamos de uma query do Pandas
-    pergunta_local_query = "diabetes == 1" # A query real seria 'age[diabetes == 1].mean()'
-    # Vamos adaptar a pergunta para o nosso agente de query
-    pergunta_local_adaptada = "Me dê os dados para pacientes onde 'diabetes == 1' para que eu possa calcular a idade média."
-    resultado1 = agente.analisar(pergunta_local_adaptada)
-    print("\n--- RESULTADO 1 (Busca Local) ---")
-    print(f"Pergunta: {resultado1['pergunta']}")
+    pergunta_local = "Quantos pacientes com idade acima de 60 anos (age > 60) têm diabetes (diabetes == 1)?"
+    resultado1 = agente.analisar(pergunta_local)
+    print("\n--- RESULTADO 1 (Busca Estruturada) ---")
     print(f"Resposta: {resultado1['resposta']}")
     print("="*50)
 
-    # Pergunta 2: Requer conhecimento externo (fallback para Tavily)
+    # Pergunta 2: Teste do RAG Vetorial (FAISS)
     print("\n" + "="*50)
-    pergunta_externa = "Quais são as últimas diretrizes da OMS para o tratamento de diabetes tipo 2?"
-    resultado2 = agente.analisar(pergunta_externa)
-    print("\n--- RESULTADO 2 (Busca Externa) ---")
-    print(f"Pergunta: {resultado2['pergunta']}")
+    pergunta_conceitual = "O que este documento diz sobre o tratamento de diabetes?"
+    resultado2 = agente.analisar(pergunta_conceitual)
+    print("\n--- RESULTADO 2 (RAG Vetorial) ---")
     print(f"Resposta: {resultado2['resposta']}")
+    print("="*50)
+
+    # Pergunta 3: Teste da Busca Externa (Tavily)
+    print("\n" + "="*50)
+    pergunta_externa = "Quais são as últimas notícias sobre a cura do diabetes tipo 1? site:cdc.gov"
+    resultado3 = agente.analisar(pergunta_externa)
+    print("\n--- RESULTADO 3 (Busca Externa) ---")
+    print(f"Resposta: {resultado3['resposta']}")
     print("="*50)
