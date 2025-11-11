@@ -5,9 +5,11 @@
 import pandas as pd
 import os
 from typing import Dict, List, Any
+from dotenv import load_dotenv
+load_dotenv()
 
 # Ferramentas de busca, LLMs e RAG
-from langchain_community.utilities import DuckDBLoader
+from langchain_community.document_loaders import DuckDBLoader
 from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain_openai import ChatOpenAI
 from langchain.agents import AgentExecutor, create_react_agent

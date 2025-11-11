@@ -10,7 +10,7 @@ from langchain_community.embeddings import SentenceTransformerEmbeddings
 from langchain_community.vectorstores import FAISS
 
 # --- Configuração ---
-DOCUMENTS_FOLDER_PATH = "meus_documentos" # Pasta onde seus PDFs e TXTs estão
+DOCUMENTS_FOLDER_PATH = "/home/danilo/repos/statistical_agent_medical_data/data/oms_factsheet_diabetes.pdf" # Pasta onde seus PDFs e TXTs estão
 INDEX_PATH = "faiss_index" # Pasta onde o índice vetorial será salvo
 MODEL_NAME = "pritamdeka/S-PubMedBert-MS-MARCO" # Modelo de embedding focado em medicina
 
@@ -31,18 +31,22 @@ def create_vector_store():
     loader_map = {
         ".pdf": PyPDFLoader,
         ".txt": TextLoader,
-        # Você pode adicionar mais loaders aqui (ex: .docx)
     }
     
-    loader = DirectoryLoader(
-        DOCUMENTS_FOLDER_PATH,
-        glob="**/*.*", # Carrega todos os arquivos
-        use_multithreading=True,
-        show_progress=True,
-        loader_map=loader_map
-    )
+    # loader = DirectoryLoader(
+    #     DOCUMENTS_FOLDER_PATH,
+    #     glob="**/*.*", # Carrega todos os arquivos
+    #     use_multithreading=True,
+    #     show_progress=True,
+    #     loader_map=loader_map
+    # )
     
+    loader = PyPDFLoader(
+        DOCUMENTS_FOLDER_PATH
+    )
+
     docs = loader.load()
+
     
     if not docs:
         print("Nenhum documento encontrado na pasta. Encerrando.")
