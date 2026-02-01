@@ -43,7 +43,7 @@ class SistemaMultiAgente:
     def processar_solicitacao(self, prompt_usuario: str, caminho_imagem: str = None):
         """
         Processa uma única solicitação do usuário, desde o roteamento até a execução.
-        """
+        """    
         try:
             decisao = self.agente_organizador.rotear_prompt(prompt_usuario)
             

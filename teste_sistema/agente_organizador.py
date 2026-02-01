@@ -30,7 +30,7 @@ class AgenteOrganizador:
         """
         self.model_name = model_name
         try:
-            self.llm = Ollama(model=self.model_name, temperature=0.0, format="json")
+            self.llm = Ollama(model=self.model_name, temperature=0.0, format="json", base_url="http://127.0.0.1:11434")
             self.llm.invoke("Responda apenas com 'OK'")
             print(f"Agente Organizador inicializado com sucesso, conectado ao modelo '{self.model_name}'.")
         except Exception as e:

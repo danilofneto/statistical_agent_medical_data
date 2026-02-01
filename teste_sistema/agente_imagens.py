@@ -28,7 +28,7 @@ class AgenteDeImagens:
         try:
             # A classe Ollama do LangChain pode interagir com modelos multimodais
             # passando a imagem como parte da chamada.
-            self.llm = Ollama(model=self.model_name, temperature=0.1)
+            self.llm = Ollama(model=self.model_name, temperature=0.1, base_url="http://127.0.0.1:11434")
             # Testa a conexão
             self.llm.invoke("Olá")
             print(f"Agente de Imagens inicializado com sucesso, conectado ao modelo '{self.model_name}'.")
@@ -115,16 +115,16 @@ def baixar_imagem_exemplo(url: str, nome_arquivo: str):
 
 if __name__ == "__main__":
     print("="*60)
-    print("🚀 DEMONSTRAÇÃO DO AGENTE DE IMAGENS MÉDICAS (VQA)")
+    print("DEMONSTRAÇÃO DO AGENTE DE IMAGENS MÉDICAS (VQA)")
     print("="*60)
     
     # 1. Preparar o ambiente
     # URL de um raio-x de tórax com pneumonia (fonte: Wikimedia Commons, CC BY-SA 4.0)
-    IMAGE_URL = "https://upload.wikimedia.org/wikipedia/commons/c/c1/Pneumonia_x-ray.jpg"
-    IMAGE_PATH = "raio_x_exemplo.jpg"
+    IMAGE_URL = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Pneumonia_x-ray.jpg/435px-Pneumonia_x-ray.jpg"
+    IMAGE_PATH = "m2400651.jpg"
     
-    if not baixar_imagem_exemplo(IMAGE_URL, IMAGE_PATH):
-        exit()
+    #if not baixar_imagem_exemplo(IMAGE_URL, IMAGE_PATH):
+    #    exit()
 
     # 2. Inicializar o agente
     # Certifique-se de ter o LLaVA rodando no Ollama: `ollama run llava:7b`
@@ -143,9 +143,9 @@ if __name__ == "__main__":
     if "error" in resultado_analise:
         print(f"Ocorreu um erro: {resultado_analise['error']}")
     else:
-        print(f"🖼️ Imagem Analisada: {resultado_analise['image_path']}")
-        print(f"❓ Pergunta Feita: {resultado_analise['question']}")
-        print("\n🧠 Resposta do Modelo:")
+        print(f"Imagem Analisada: {resultado_analise['image_path']}")
+        print(f"Pergunta Feita: {resultado_analise['question']}")
+        print("\nResposta do Modelo:")
         print(resultado_analise['answer'])
     print("-" * 60)
     

@@ -139,28 +139,44 @@
          * FUNÇÃO ATUALIZADA: FAZ UMA CHAMADA DE API REAL PARA O SERVIDOR FLASK
          */
         async function chamarBackendReal(prompt, imageBase64) {
-            console.log("Enviando solicitação para o backend...");
-            const backendUrl = 'http://127.0.0.1:5000/analyze';
+    console.log("Enviando solicitação para o backend...");
+    const backendUrl = 'http://127.0.0.1:5000/analyze';
 
-            const response = await fetch(backendUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    prompt: prompt,
-                    imageBase64: imageBase64,
-                }),
-            });
+    // 1. Configurar um Timeout Manual de 5 minutos (300.000 ms)
+    // O padrão do navegador pode ser curto demais para o Llama 3 local.
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 600000); 
 
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.error || `Erro do servidor: ${response.status}`);
-            }
+    try {
+        const response = await fetch(backendUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                prompt: prompt,
+                imageBase64: imageBase64,
+            }),
+            signal: controller.signal // <--- Liga o timeout à requisição
+        });
 
-            return response.json();
+        clearTimeout(timeoutId); // Limpa o timer se a resposta chegar antes
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || `Erro do servidor: ${response.status}`);
         }
 
+        return response.json();
+
+    } catch (error) {
+        if (error.name === 'AbortError') {
+            throw new Error("O modelo demorou mais de 5 minutos para responder. Tente um prompt menor ou verifique o console do servidor.");
+        }
+        // Se for NetworkError, geralmente é CORS ou Servidor Offline
+        throw error;
+    }
+}
         // Renderiza o resultado na tela
         function renderResult(result) {
             let html = `<p class="text-sm text-gray-500 mb-4">Resposta do: <strong>${result.agent}</strong></p>`;

@@ -10,7 +10,8 @@ import requests
 from bs4 import BeautifulSoup
 
 # Biblioteca da Fiocruz para acessar dados públicos do SUS
-from pysus.online_data import SIHSUS
+#from pysus.online_data import SIH
+from pysus.online_data.SIA import download as download_sia
 
 # --- Configurações ---
 DATA_DIR = "data"
@@ -24,23 +25,26 @@ os.makedirs(PDF_DIR, exist_ok=True)
 # ============================================================
 def baixar_dados_sih(ano=2023):
     print(f"Baixando dados do SIH/SUS (internações) para {ano}...")
-    ufs = ['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT',
-           'PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO']
+    # ufs = ['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT',
+    #        'PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO']
+    ufs = ['MG']  # Teste com apenas MG para agilizar
 
-    dfs = []
-    for uf in ufs:
-        try:
-            df = SIHSUS().download(uf, ano, 1)
-            df["UF"] = uf
-            dfs.append(df)
-        except Exception as e:
-            print(f"Falha ao baixar dados de {uf}: {e}")
+    # dfs = []
+    # for uf in ufs:
+    #     try:
+    #         df = SIH().download('MG', 2023)
+    #         df["UF"] = uf
+    #         dfs.append(df)
+    #     except Exception as e:
+    #         print(f"Falha ao baixar dados de {uf}: {e}")
 
-    dados_sih = pd.concat(dfs, ignore_index=True)
+    # dados_sih = pd.concat(dfs, ignore_index=True)
+    # print(f"Dados consolidados: {len(dados_sih)} registros totais.")
+    # dados_sih.to_csv(CSV_OUTPUT, index=False)
+    # print(f"Arquivo salvo em: {CSV_OUTPUT}")
+    
+    dados_sih = download_sia('MG', 2023, months=list(range(1,2)), groups=["BI"])
     print(f"Dados consolidados: {len(dados_sih)} registros totais.")
-    dados_sih.to_csv(CSV_OUTPUT, index=False)
-    print(f"Arquivo salvo em: {CSV_OUTPUT}")
-
 
 def baixar_pdfs_diabetes():
     print("Buscando PDFs do Ministério da Saúde sobre Diabetes...")
