@@ -1,0 +1,4482 @@
+[
+    {
+        "texto": "Preciso que você faça uma série temporal do realizado dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Olá, quem é você?",
+        "label": 3
+    },
+    {
+        "texto": "Estime uma série temporal do realizado dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Verifique este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Calcule a análise de coorte no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Exporte um resumo clínico deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Estime a distribuição dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Analise esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Monte o histórico de alta deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Exporte o prontuário deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Cheque este ultrassom verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Os dados estruturados para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Estime uma série temporal do realizado dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Conte uma piada",
+        "label": 3
+    },
+    {
+        "texto": "Calcule a média de idade no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "O prontuário para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Escreva um relatório médico deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você estime o risco preditivo para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Avalie esta ressonância magnética para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Avalie esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Construa o risco preditivo na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Avalie este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Construa a análise de coorte dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Analise esta tomografia em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Qual é a análise de coorte na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Analise este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Calcule a média de idade dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Analise este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Teste de sistema",
+        "label": 3
+    },
+    {
+        "texto": "Analise o rx",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você calcule o risco preditivo no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Dê uma olhada em este ultrassom para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você qual é a análise de coorte dos internados",
+        "label": 1
+    },
+    {
+        "texto": "O histórico de alta em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você calcule a média de idade na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "O histórico de alta em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Calcule a análise de coorte para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Faça a distribuição dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "O histórico de alta do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Estime o risco preditivo dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Oi",
+        "label": 3
+    },
+    {
+        "texto": "Um relatório médico do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Um relatório médico para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Analise o rx buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você calcule a análise de coorte dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Cheque esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Gere a distribuição dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Resuma um resumo clínico para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Cheque o rx",
+        "label": 0
+    },
+    {
+        "texto": "Examine a TC",
+        "label": 0
+    },
+    {
+        "texto": "Examine esta imagem de raio-x verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Verifique esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Oi",
+        "label": 3
+    },
+    {
+        "texto": "Um relatório médico do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Um resumo clínico em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Gere o histórico de alta do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Faça a média de idade dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Exporte um resumo clínico do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você gere a análise de coorte dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Avalie o rx verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Tudo certo por aqui?",
+        "label": 3
+    },
+    {
+        "texto": "Analise esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Crie um resumo clínico do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Examine este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Examine esta ressonância magnética para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Examine o rx para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Analise o rx para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Um relatório médico do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você estime a distribuição na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Construa o risco preditivo para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Verifique esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Qual o sentido da vida?",
+        "label": 3
+    },
+    {
+        "texto": "Gere um resumo clínico deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Escreva um resumo clínico do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Construa um modelo de regressão na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Construa uma série temporal do realizado para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Um resumo clínico deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Cheque esta ressonância magnética em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Um relatório médico do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Como você pode me ajudar?",
+        "label": 3
+    },
+    {
+        "texto": "Preciso que você faça uma série temporal do realizado na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você gere a distribuição no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Analise esta imagem de raio-x verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "O prontuário para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Cheque esta tomografia para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Qual é a distribuição dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Avalie esta ressonância magnética buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você estime a distribuição dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Conte uma piada",
+        "label": 3
+    },
+    {
+        "texto": "O histórico de alta do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você qual é o risco preditivo para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você construa a distribuição na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Examine este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Qual o sentido da vida?",
+        "label": 3
+    },
+    {
+        "texto": "Preciso que você gere um modelo de regressão na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Escreva o prontuário do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Gere um relatório médico deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Dê uma olhada em esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Dê uma olhada em o rx",
+        "label": 0
+    },
+    {
+        "texto": "Gere uma série temporal do realizado dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Crie o prontuário deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Verifique esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Exporte o histórico de alta deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Dê uma olhada em esta ressonância magnética para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você qual é uma série temporal do realizado dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Dê uma olhada em o rx verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Analise a TC para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Construa a média de idade para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Verifique esta imagem de raio-x para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Crie os dados estruturados em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Analise esta ressonância magnética em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Os dados estruturados para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Resuma o histórico de alta em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Cheque a TC",
+        "label": 0
+    },
+    {
+        "texto": "Avalie esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Analise este ultrassom verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Um relatório médico deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Cheque o rx para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você estime uma série temporal do realizado dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Os dados estruturados do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você estime a análise de coorte para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Monte o prontuário deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Calcule um modelo de regressão dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Verifique o rx",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você qual é a distribuição no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você construa a análise de coorte na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Avalie este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Analise esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Construa a distribuição no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você estime uma série temporal do realizado para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Exporte os dados estruturados para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você estime a média de idade na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Calcule a distribuição na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Dê uma olhada em o rx",
+        "label": 0
+    },
+    {
+        "texto": "Examine esta ressonância magnética em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Monte os dados estruturados deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Construa um modelo de regressão para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você gere a média de idade no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Verifique o rx",
+        "label": 0
+    },
+    {
+        "texto": "Tudo certo por aqui?",
+        "label": 3
+    },
+    {
+        "texto": "Verifique a TC",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você faça a média de idade no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Um resumo clínico do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Um relatório médico do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você construa a análise de coorte para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Gere a média de idade dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Dê uma olhada em este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Calcule a média de idade dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Um relatório médico do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Verifique esta imagem de raio-x buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "O histórico de alta para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Escreva um resumo clínico deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Olá, quem é você?",
+        "label": 3
+    },
+    {
+        "texto": "Exporte o prontuário em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Dê uma olhada em esta imagem de raio-x verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Analise a TC para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Um resumo clínico em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Calcule a análise de coorte na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você faça a análise de coorte no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você gere o risco preditivo dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Verifique a TC para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Qual é a análise de coorte dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Verifique esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Crie o prontuário para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você estime um modelo de regressão para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Cheque esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Cheque o rx para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Teste de sistema",
+        "label": 3
+    },
+    {
+        "texto": "Examine esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Verifique o rx verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você construa um modelo de regressão dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Teste de sistema",
+        "label": 3
+    },
+    {
+        "texto": "O histórico de alta do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Crie um relatório médico para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Escreva um relatório médico em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Cheque esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Resuma os dados estruturados deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você calcule a distribuição para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Faça uma série temporal do realizado para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Verifique esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Dê uma olhada em este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Avalie o rx para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Analise a TC",
+        "label": 0
+    },
+    {
+        "texto": "Exporte os dados estruturados do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Um relatório médico deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você calcule a distribuição no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Estime a distribuição na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Avalie esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Calcule a análise de coorte dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você faça o risco preditivo na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você faça a distribuição no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Verifique esta tomografia para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Cheque o rx em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Verifique a TC",
+        "label": 0
+    },
+    {
+        "texto": "Cheque a TC",
+        "label": 0
+    },
+    {
+        "texto": "Estime a análise de coorte dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Analise a TC",
+        "label": 0
+    },
+    {
+        "texto": "O prontuário do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Faça a análise de coorte dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Avalie este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Construa uma série temporal do realizado no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Examine esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "O prontuário deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Analise este ultrassom para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Verifique esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Dê uma olhada em a TC verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Conte uma piada",
+        "label": 3
+    },
+    {
+        "texto": "Preciso que você construa a distribuição para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Monte um relatório médico deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Estime o risco preditivo na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Crie o histórico de alta para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Gere os dados estruturados do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Avalie a TC",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você qual é uma série temporal do realizado no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Avalie esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Analise esta tomografia buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Calcule a distribuição dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Monte um resumo clínico em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Analise esta tomografia para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Examine este ultrassom para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Analise esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Gere os dados estruturados para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Examine o rx para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você qual é a distribuição dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Calcule um modelo de regressão no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Qual é um modelo de regressão dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "O prontuário do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você construa a análise de coorte dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Calcule uma série temporal do realizado no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você faça um modelo de regressão para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Resuma um relatório médico para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Faça um modelo de regressão dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Monte um resumo clínico do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Exporte o histórico de alta do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você calcule a análise de coorte na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Os dados estruturados do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você faça um modelo de regressão dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Calcule a distribuição para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Faça um modelo de regressão no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "O prontuário do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Os dados estruturados do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você qual é a média de idade para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Cheque esta tomografia buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você calcule a média de idade dos internados",
+        "label": 1
+    },
+    {
+        "texto": "O histórico de alta do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "O histórico de alta do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Qual o sentido da vida?",
+        "label": 3
+    },
+    {
+        "texto": "Preciso que você qual é o risco preditivo dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Dê uma olhada em esta ressonância magnética em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Gere o prontuário deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você faça o risco preditivo dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Resuma o prontuário em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Verifique este ultrassom em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Calcule o risco preditivo no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "O histórico de alta deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Escreva os dados estruturados para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você faça uma série temporal do realizado dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Avalie esta ressonância magnética verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Escreva os dados estruturados do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Qual é a análise de coorte para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Qual a capital do Brasil?",
+        "label": 3
+    },
+    {
+        "texto": "Preciso que você construa a distribuição dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você construa a distribuição no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Cheque esta ressonância magnética para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Qual a capital do Brasil?",
+        "label": 3
+    },
+    {
+        "texto": "Verifique este ultrassom buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Dê uma olhada em a TC em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "O histórico de alta do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Um relatório médico deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você faça um modelo de regressão na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Dê uma olhada em esta ressonância magnética buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você calcule uma série temporal do realizado para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Qual a capital do Brasil?",
+        "label": 3
+    },
+    {
+        "texto": "Preciso que você faça a média de idade dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Examine este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Avalie a TC para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Estime o risco preditivo para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você calcule um modelo de regressão para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você calcule o risco preditivo dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Exporte os dados estruturados em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Dê uma olhada em esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Gere um modelo de regressão na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Verifique a TC",
+        "label": 0
+    },
+    {
+        "texto": "Um resumo clínico em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Um relatório médico para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você construa uma série temporal do realizado dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Examine o rx",
+        "label": 0
+    },
+    {
+        "texto": "Cheque esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Resuma um relatório médico do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Qual é a distribuição na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Cheque a TC buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Olá, quem é você?",
+        "label": 3
+    },
+    {
+        "texto": "Faça o risco preditivo dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "O histórico de alta para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Analise o rx",
+        "label": 0
+    },
+    {
+        "texto": "Verifique este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Cheque esta ressonância magnética verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Conte uma piada",
+        "label": 3
+    },
+    {
+        "texto": "Cheque o rx verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Avalie esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Escreva o prontuário deste caso",
+        "label": 2
+    },
+    {
+        "texto": "O histórico de alta para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Avalie esta tomografia em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você estime uma série temporal do realizado na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você qual é a análise de coorte para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Faça a análise de coorte no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você gere a média de idade na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Monte um resumo clínico deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Construa uma série temporal do realizado dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Gere um resumo clínico para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Qual a capital do Brasil?",
+        "label": 3
+    },
+    {
+        "texto": "Exporte um resumo clínico do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Bom dia, tudo bem?",
+        "label": 3
+    },
+    {
+        "texto": "Gere um resumo clínico em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Examine a TC",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você calcule um modelo de regressão dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Qual é o risco preditivo no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você qual é a análise de coorte no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Analise o rx verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Avalie esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Gere o histórico de alta para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "O histórico de alta para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Faça o risco preditivo no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Gere uma série temporal do realizado no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "O prontuário deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Cheque esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "O histórico de alta do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Escreva um relatório médico do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Avalie esta tomografia buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você construa a análise de coorte no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Verifique este ultrassom para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Os dados estruturados deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Monte os dados estruturados do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Exporte os dados estruturados deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Dê uma olhada em esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Examine esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Examine o rx",
+        "label": 0
+    },
+    {
+        "texto": "Boa tarde",
+        "label": 3
+    },
+    {
+        "texto": "Monte um resumo clínico do paciente",
+        "label": 2
+    },
+    {
+        "texto": "O prontuário em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Analise esta imagem de raio-x para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Avalie a TC verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "O histórico de alta para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Cheque esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Crie os dados estruturados do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Tudo certo por aqui?",
+        "label": 3
+    },
+    {
+        "texto": "O prontuário do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você faça a média de idade na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Cheque este ultrassom em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Avalie a TC",
+        "label": 0
+    },
+    {
+        "texto": "Resuma o histórico de alta deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Cheque o rx",
+        "label": 0
+    },
+    {
+        "texto": "Tudo certo por aqui?",
+        "label": 3
+    },
+    {
+        "texto": "Preciso que você estime a média de idade no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Oi",
+        "label": 3
+    },
+    {
+        "texto": "Avalie este ultrassom verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você gere uma série temporal do realizado para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Monte o histórico de alta do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "O histórico de alta em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Os dados estruturados em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você estime o risco preditivo dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "O prontuário do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Analise este ultrassom buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Verifique o rx",
+        "label": 0
+    },
+    {
+        "texto": "Um resumo clínico em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Examine esta tomografia em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "O histórico de alta deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Gere uma série temporal do realizado na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Os dados estruturados deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Gere os dados estruturados do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Cheque a TC para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Escreva o histórico de alta em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Construa a análise de coorte dos internados",
+        "label": 1
+    },
+    {
+        "texto": "O prontuário do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você calcule uma série temporal do realizado dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você calcule a média de idade para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você calcule o risco preditivo para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Dê uma olhada em esta tomografia para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Verifique esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Examine esta imagem de raio-x buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Exporte um relatório médico deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você estime a distribuição para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você faça a média de idade para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Estime o risco preditivo no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você gere o risco preditivo dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Crie um relatório médico deste caso",
+        "label": 2
+    },
+    {
+        "texto": "O prontuário do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você estime uma série temporal do realizado no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Verifique esta imagem de raio-x verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Crie um resumo clínico deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você faça o risco preditivo no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Um relatório médico em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Qual é um modelo de regressão dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Monte um relatório médico para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Avalie esta imagem de raio-x para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Escreva um resumo clínico em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Calcule um modelo de regressão para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Analise esta ressonância magnética para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Boa tarde",
+        "label": 3
+    },
+    {
+        "texto": "Analise este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Dê uma olhada em este ultrassom em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você construa uma série temporal do realizado no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Avalie a TC",
+        "label": 0
+    },
+    {
+        "texto": "Analise esta ressonância magnética para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Faça um modelo de regressão na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você calcule um modelo de regressão na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Construa um modelo de regressão dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Um resumo clínico do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Teste de sistema",
+        "label": 3
+    },
+    {
+        "texto": "Avalie esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Faça a média de idade na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Bom dia, tudo bem?",
+        "label": 3
+    },
+    {
+        "texto": "Como você pode me ajudar?",
+        "label": 3
+    },
+    {
+        "texto": "Um resumo clínico deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você calcule um modelo de regressão dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você estime a média de idade dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você calcule uma série temporal do realizado dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Examine a TC em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Um resumo clínico para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Avalie o rx",
+        "label": 0
+    },
+    {
+        "texto": "Estime a distribuição dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Construa um modelo de regressão dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Monte o prontuário para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Boa tarde",
+        "label": 3
+    },
+    {
+        "texto": "Examine a TC para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Crie um resumo clínico para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Resuma um relatório médico em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Crie o histórico de alta do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Construa a média de idade dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Gere o risco preditivo no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Estime um modelo de regressão na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Resuma os dados estruturados em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Crie o prontuário em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Gere os dados estruturados deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Oi",
+        "label": 3
+    },
+    {
+        "texto": "Um resumo clínico do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Conte uma piada",
+        "label": 3
+    },
+    {
+        "texto": "Resuma o histórico de alta do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Examine a TC",
+        "label": 0
+    },
+    {
+        "texto": "O prontuário deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Verifique esta ressonância magnética verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Calcule o risco preditivo dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Examine esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você estime a distribuição dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Escreva o histórico de alta do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Dê uma olhada em o rx em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Avalie a TC em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Tudo certo por aqui?",
+        "label": 3
+    },
+    {
+        "texto": "Analise esta tomografia verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Um resumo clínico deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Examine o rx",
+        "label": 0
+    },
+    {
+        "texto": "Qual o sentido da vida?",
+        "label": 3
+    },
+    {
+        "texto": "Gere a distribuição no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Exporte um resumo clínico para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Verifique a TC em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você qual é a distribuição para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Resuma o prontuário do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Cheque este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Calcule o risco preditivo para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Os dados estruturados do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Cheque este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Examine este ultrassom verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você gere a média de idade para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você estime um modelo de regressão no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Faça a análise de coorte na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você estime a análise de coorte dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você calcule um modelo de regressão no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Bom dia, tudo bem?",
+        "label": 3
+    },
+    {
+        "texto": "Faça uma série temporal do realizado no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Construa a distribuição dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você faça a distribuição na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Estime a média de idade no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Cheque a TC verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você estime a análise de coorte na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você faça a distribuição dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Gere o risco preditivo dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Analise esta tomografia para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Dê uma olhada em a TC para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Cheque a TC",
+        "label": 0
+    },
+    {
+        "texto": "Estime a média de idade para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você gere a análise de coorte na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Qual é a média de idade no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você qual é a distribuição dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Gere a média de idade para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "O histórico de alta do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Analise este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você faça o risco preditivo dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Examine a TC buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Cheque este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Qual o sentido da vida?",
+        "label": 3
+    },
+    {
+        "texto": "Construa a análise de coorte na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Examine este ultrassom em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Um relatório médico em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você faça uma série temporal do realizado para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você calcule a média de idade dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Verifique esta tomografia buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Dê uma olhada em a TC",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você qual é a análise de coorte dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você estime a média de idade para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Construa o risco preditivo dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Um relatório médico do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Analise o rx",
+        "label": 0
+    },
+    {
+        "texto": "Cheque este ultrassom para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Como você pode me ajudar?",
+        "label": 3
+    },
+    {
+        "texto": "Preciso que você estime a análise de coorte no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Avalie a TC",
+        "label": 0
+    },
+    {
+        "texto": "Avalie esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Avalie esta imagem de raio-x para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Tudo certo por aqui?",
+        "label": 3
+    },
+    {
+        "texto": "Preciso que você calcule a média de idade no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você estime o risco preditivo no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Gere a distribuição dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Cheque o rx",
+        "label": 0
+    },
+    {
+        "texto": "Crie o prontuário do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Faça o risco preditivo para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Construa a distribuição na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Monte o histórico de alta do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Cheque esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Gere a análise de coorte dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Como você pode me ajudar?",
+        "label": 3
+    },
+    {
+        "texto": "Avalie o rx em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Gere a distribuição para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Gere o risco preditivo para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Faça a distribuição para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Exporte um relatório médico em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Dê uma olhada em esta ressonância magnética verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você qual é uma série temporal do realizado dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Avalie esta tomografia para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você gere a análise de coorte para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Avalie esta imagem de raio-x verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Construa a média de idade na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Crie um relatório médico em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você gere uma série temporal do realizado no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Faça uma série temporal do realizado dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Examine esta imagem de raio-x para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Boa tarde",
+        "label": 3
+    },
+    {
+        "texto": "Olá, quem é você?",
+        "label": 3
+    },
+    {
+        "texto": "Construa uma série temporal do realizado dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Analise esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você construa o risco preditivo dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Cheque esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Estime um modelo de regressão no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Faça um modelo de regressão para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Qual o sentido da vida?",
+        "label": 3
+    },
+    {
+        "texto": "Examine esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Gere a média de idade no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Conte uma piada",
+        "label": 3
+    },
+    {
+        "texto": "Gere o prontuário do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Exporte um relatório médico do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Resuma os dados estruturados para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Analise o rx",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você estime uma série temporal do realizado dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Avalie este ultrassom para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Os dados estruturados em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "O histórico de alta do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Dê uma olhada em esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Crie um resumo clínico do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Escreva um relatório médico do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Dê uma olhada em o rx",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você faça a análise de coorte para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Cheque a TC para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Verifique esta ressonância magnética para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Avalie a TC",
+        "label": 0
+    },
+    {
+        "texto": "Um resumo clínico do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Monte o prontuário em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Monte um relatório médico do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Resuma um resumo clínico do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Construa um modelo de regressão no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Bom dia, tudo bem?",
+        "label": 3
+    },
+    {
+        "texto": "Dê uma olhada em esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Construa o risco preditivo dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você construa a média de idade na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Cheque a TC",
+        "label": 0
+    },
+    {
+        "texto": "Dê uma olhada em esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "O histórico de alta em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você qual é um modelo de regressão dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você calcule uma série temporal do realizado no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Dê uma olhada em esta imagem de raio-x buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Qual a capital do Brasil?",
+        "label": 3
+    },
+    {
+        "texto": "Crie os dados estruturados para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Gere o risco preditivo dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Escreva o prontuário para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Um resumo clínico do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você construa uma série temporal do realizado para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Dê uma olhada em esta imagem de raio-x em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Escreva o histórico de alta deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Qual o sentido da vida?",
+        "label": 3
+    },
+    {
+        "texto": "Calcule uma série temporal do realizado dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Dê uma olhada em esta tomografia para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Um resumo clínico do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Bom dia, tudo bem?",
+        "label": 3
+    },
+    {
+        "texto": "Avalie esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Exporte o histórico de alta em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Um relatório médico para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Estime um modelo de regressão dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Olá, quem é você?",
+        "label": 3
+    },
+    {
+        "texto": "Calcule o risco preditivo na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Examine esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você qual é o risco preditivo dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Faça uma série temporal do realizado na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Analise esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Boa tarde",
+        "label": 3
+    },
+    {
+        "texto": "Bom dia, tudo bem?",
+        "label": 3
+    },
+    {
+        "texto": "Cheque esta ressonância magnética para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "O prontuário em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Um resumo clínico do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Os dados estruturados do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Estime um modelo de regressão dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você faça a análise de coorte na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Gere um modelo de regressão para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Gere o histórico de alta do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Dê uma olhada em a TC",
+        "label": 0
+    },
+    {
+        "texto": "Gere um modelo de regressão no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Os dados estruturados deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Escreva o prontuário em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Bom dia, tudo bem?",
+        "label": 3
+    },
+    {
+        "texto": "Gere um relatório médico do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Qual é uma série temporal do realizado no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Monte um relatório médico do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Conte uma piada",
+        "label": 3
+    },
+    {
+        "texto": "Preciso que você construa uma série temporal do realizado dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Analise esta ressonância magnética buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Dê uma olhada em este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Escreva o prontuário do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você calcule a análise de coorte dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você faça a análise de coorte dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Dê uma olhada em a TC",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você estime um modelo de regressão dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Verifique esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Um relatório médico em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Dê uma olhada em este ultrassom para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Resuma os dados estruturados do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Examine esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Analise esta ressonância magnética verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Tudo certo por aqui?",
+        "label": 3
+    },
+    {
+        "texto": "Examine a TC",
+        "label": 0
+    },
+    {
+        "texto": "Dê uma olhada em esta tomografia em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Dê uma olhada em a TC buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você gere uma série temporal do realizado dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Examine esta ressonância magnética verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Examine o rx",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você faça a média de idade dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Analise este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você calcule a distribuição dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Verifique a TC para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Olá, quem é você?",
+        "label": 3
+    },
+    {
+        "texto": "O prontuário para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "O prontuário para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você gere a média de idade dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Dê uma olhada em o rx para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Examine esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Analise esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Gere a média de idade na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Examine esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Avalie o rx para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Um resumo clínico do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Crie o histórico de alta do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você estime a distribuição no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Um resumo clínico deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você qual é a distribuição na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Os dados estruturados deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Verifique o rx",
+        "label": 0
+    },
+    {
+        "texto": "Um relatório médico para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Como você pode me ajudar?",
+        "label": 3
+    },
+    {
+        "texto": "Calcule a média de idade para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Os dados estruturados para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você calcule o risco preditivo na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Dê uma olhada em esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Analise o rx em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Avalie esta tomografia para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Qual a capital do Brasil?",
+        "label": 3
+    },
+    {
+        "texto": "Avalie este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você qual é um modelo de regressão no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Qual é uma série temporal do realizado para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Um resumo clínico em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Analise este ultrassom para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Qual é o risco preditivo dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Avalie este ultrassom em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Escreva um relatório médico para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Exporte o histórico de alta do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "O prontuário deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Qual é a distribuição no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você gere o risco preditivo para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Qual é um modelo de regressão no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Gere a distribuição na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Monte o histórico de alta para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Cheque esta ressonância magnética buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Estime uma série temporal do realizado na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Avalie esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Dê uma olhada em o rx",
+        "label": 0
+    },
+    {
+        "texto": "Monte um relatório médico em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Analise o rx",
+        "label": 0
+    },
+    {
+        "texto": "Oi",
+        "label": 3
+    },
+    {
+        "texto": "Crie o histórico de alta em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você construa a análise de coorte dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Verifique este ultrassom verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Analise a TC em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Teste de sistema",
+        "label": 3
+    },
+    {
+        "texto": "Exporte o histórico de alta para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você faça a distribuição para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Construa uma série temporal do realizado na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você estime a análise de coorte dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Examine esta ressonância magnética buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Dê uma olhada em a TC",
+        "label": 0
+    },
+    {
+        "texto": "Examine este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você estime o risco preditivo dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Cheque o rx buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Cheque este ultrassom buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Avalie este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Monte o histórico de alta em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Verifique o rx",
+        "label": 0
+    },
+    {
+        "texto": "Verifique a TC buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Cheque este ultrassom para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Avalie esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Verifique o rx para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você construa o risco preditivo dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Dê uma olhada em esta imagem de raio-x para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Resuma o histórico de alta do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você construa um modelo de regressão na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Analise esta imagem de raio-x buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Os dados estruturados do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Escreva o histórico de alta para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Estime um modelo de regressão para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Dê uma olhada em esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Gere um resumo clínico do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Qual é o risco preditivo para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Resuma os dados estruturados do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Um relatório médico deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Cheque a TC",
+        "label": 0
+    },
+    {
+        "texto": "Calcule o risco preditivo dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Cheque esta tomografia para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Exporte um relatório médico para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Dê uma olhada em a TC",
+        "label": 0
+    },
+    {
+        "texto": "Resuma um resumo clínico em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Gere o histórico de alta deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Faça a distribuição dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Escreva um resumo clínico do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Qual é o risco preditivo dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Verifique esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Verifique o rx em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Qual é a distribuição para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Estime a distribuição para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Tudo certo por aqui?",
+        "label": 3
+    },
+    {
+        "texto": "Analise esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Verifique esta tomografia verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "O histórico de alta em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Gere a análise de coorte dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Dê uma olhada em esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Construa a média de idade dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Os dados estruturados deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Avalie esta tomografia verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você calcule a análise de coorte no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Os dados estruturados deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Cheque esta imagem de raio-x verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Crie o prontuário do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Um relatório médico deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Resuma um relatório médico deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Bom dia, tudo bem?",
+        "label": 3
+    },
+    {
+        "texto": "Cheque esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Dê uma olhada em esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você faça uma série temporal do realizado no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Qual é a distribuição dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você qual é uma série temporal do realizado para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você construa o risco preditivo na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Olá, quem é você?",
+        "label": 3
+    },
+    {
+        "texto": "Verifique esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Estime a distribuição no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Analise o rx para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Estime a média de idade dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Qual a capital do Brasil?",
+        "label": 3
+    },
+    {
+        "texto": "Cheque esta tomografia em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você qual é a análise de coorte na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Avalie esta imagem de raio-x em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você calcule uma série temporal do realizado na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Cheque esta imagem de raio-x para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você construa a distribuição dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Resuma o prontuário do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você estime a média de idade dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Um relatório médico para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Examine esta tomografia para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Verifique esta ressonância magnética em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Faça a análise de coorte dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Um relatório médico em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Monte o prontuário do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Os dados estruturados do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Faça a distribuição no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Faça a média de idade dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Qual é uma série temporal do realizado dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Um relatório médico do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Analise a TC buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Dê uma olhada em esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Os dados estruturados do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "O histórico de alta deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você qual é o risco preditivo no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "O histórico de alta deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você qual é uma série temporal do realizado na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Como você pode me ajudar?",
+        "label": 3
+    },
+    {
+        "texto": "Examine o rx em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Dê uma olhada em esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "O prontuário do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Avalie este ultrassom buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Faça o risco preditivo dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Qual o sentido da vida?",
+        "label": 3
+    },
+    {
+        "texto": "Preciso que você construa o risco preditivo para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Teste de sistema",
+        "label": 3
+    },
+    {
+        "texto": "Crie os dados estruturados deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Gere o prontuário em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você construa uma série temporal do realizado na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Escreva os dados estruturados deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Teste de sistema",
+        "label": 3
+    },
+    {
+        "texto": "Preciso que você gere a análise de coorte no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Resuma um resumo clínico deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Crie o histórico de alta deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Um resumo clínico para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você calcule a distribuição dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Analise esta imagem de raio-x em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Calcule um modelo de regressão dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Avalie o rx buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Resuma o prontuário deste caso",
+        "label": 2
+    },
+    {
+        "texto": "Calcule uma série temporal do realizado dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Examine este ultrassom buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Faça o risco preditivo na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "O histórico de alta para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Os dados estruturados em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Avalie a TC para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Cheque esta imagem de raio-x em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Um resumo clínico do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Verifique este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Analise esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você qual é o risco preditivo na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você construa a média de idade para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Oi",
+        "label": 3
+    },
+    {
+        "texto": "Escreva o histórico de alta do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Teste de sistema",
+        "label": 3
+    },
+    {
+        "texto": "Um resumo clínico para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você gere a distribuição na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Verifique esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Olá, quem é você?",
+        "label": 3
+    },
+    {
+        "texto": "Preciso que você gere uma série temporal do realizado na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Um relatório médico deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Examine esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Monte os dados estruturados em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Avalie esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você gere a distribuição dos internados",
+        "label": 1
+    },
+    {
+        "texto": "O prontuário em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Escreva os dados estruturados em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Examine esta tomografia para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Cheque esta tomografia verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Verifique a TC",
+        "label": 0
+    },
+    {
+        "texto": "Os dados estruturados em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Dê uma olhada em o rx",
+        "label": 0
+    },
+    {
+        "texto": "O prontuário do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Calcule uma série temporal do realizado na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Verifique esta imagem de raio-x em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Verifique o rx para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você construa a média de idade dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você construa a média de idade dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Olá, quem é você?",
+        "label": 3
+    },
+    {
+        "texto": "Analise a TC",
+        "label": 0
+    },
+    {
+        "texto": "Gere o prontuário para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Gere uma série temporal do realizado dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Gere a média de idade dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Um resumo clínico deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Calcule a média de idade na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você gere um modelo de regressão dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Construa o risco preditivo no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Verifique este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Como você pode me ajudar?",
+        "label": 3
+    },
+    {
+        "texto": "Examine esta tomografia verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Calcule uma série temporal do realizado para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "O prontuário em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Resuma um resumo clínico do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "O histórico de alta deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Cheque esta imagem de raio-x buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Faça a média de idade no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Qual é uma série temporal do realizado dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Qual é a análise de coorte no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Teste de sistema",
+        "label": 3
+    },
+    {
+        "texto": "Boa tarde",
+        "label": 3
+    },
+    {
+        "texto": "Um resumo clínico do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Examine este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Oi",
+        "label": 3
+    },
+    {
+        "texto": "Preciso que você construa um modelo de regressão no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Como você pode me ajudar?",
+        "label": 3
+    },
+    {
+        "texto": "Cheque esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Faça a análise de coorte para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "O prontuário do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Dê uma olhada em este ultrassom buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Resuma um relatório médico do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Analise este ultrassom em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Verifique esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Examine a TC verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Verifique esta imagem de raio-x para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Teste de sistema",
+        "label": 3
+    },
+    {
+        "texto": "Gere um resumo clínico do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Verifique esta tomografia em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Analise esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Examine o rx",
+        "label": 0
+    },
+    {
+        "texto": "O histórico de alta do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Examine a TC",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você qual é um modelo de regressão para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Estime a média de idade na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Analise esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Dê uma olhada em o rx para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Monte os dados estruturados para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Examine a TC para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Cheque esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Avalie esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Gere a análise de coorte na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você faça a análise de coorte dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Gere um modelo de regressão dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Os dados estruturados para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você construa a média de idade no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você construa um modelo de regressão para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Calcule a análise de coorte dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Dê uma olhada em esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Gere um relatório médico do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Examine esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Construa a análise de coorte para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Como você pode me ajudar?",
+        "label": 3
+    },
+    {
+        "texto": "Um resumo clínico deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Exporte os dados estruturados do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Examine este ultrassom para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você gere o risco preditivo na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você estime um modelo de regressão dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "O prontuário deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Qual é a média de idade dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Cheque este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Avalie o rx",
+        "label": 0
+    },
+    {
+        "texto": "Qual é um modelo de regressão na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Faça a média de idade para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você construa o risco preditivo no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Avalie esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Avalie esta imagem de raio-x buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Crie um relatório médico do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você qual é a média de idade no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Oi",
+        "label": 3
+    },
+    {
+        "texto": "Verifique esta tomografia para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Um relatório médico do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você faça o risco preditivo para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "O prontuário em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Verifique esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Verifique esta ressonância magnética para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Qual é a análise de coorte dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "O histórico de alta deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Cheque esta imagem de raio-x para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Analise a TC",
+        "label": 0
+    },
+    {
+        "texto": "Cheque esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Dê uma olhada em esta tomografia verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Escreva um resumo clínico para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "O histórico de alta do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "O prontuário em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você calcule o risco preditivo dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "O histórico de alta do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "O prontuário deste caso, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Analise esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Faça um modelo de regressão dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Dê uma olhada em este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você estime o risco preditivo na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Analise esta imagem de raio-x para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Qual a capital do Brasil?",
+        "label": 3
+    },
+    {
+        "texto": "Preciso que você qual é a média de idade na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Exporte o prontuário do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "O prontuário para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Conte uma piada",
+        "label": 3
+    },
+    {
+        "texto": "Avalie o rx",
+        "label": 0
+    },
+    {
+        "texto": "Um relatório médico do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Calcule um modelo de regressão na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Avalie este ultrassom para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Examine esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você estime um modelo de regressão na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Um resumo clínico em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Estime uma série temporal do realizado no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Os dados estruturados do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Dê uma olhada em esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Estime a análise de coorte dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "O prontuário do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Verifique o rx buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Exporte um relatório médico do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você faça a distribuição dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Examine esta imagem de raio-x em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Crie um relatório médico do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Faça a distribuição na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Cheque esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Gere um relatório médico para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Resuma o prontuário para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Um relatório médico em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Monte um resumo clínico para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Analise esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Gere a análise de coorte no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Tudo certo por aqui?",
+        "label": 3
+    },
+    {
+        "texto": "Preciso que você gere um modelo de regressão no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Dê uma olhada em esta imagem de raio-x para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Bom dia, tudo bem?",
+        "label": 3
+    },
+    {
+        "texto": "Dê uma olhada em o rx buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Estime uma série temporal do realizado para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Um relatório médico para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Cheque este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Gere os dados estruturados em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você qual é a média de idade dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Resuma o histórico de alta para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Construa a distribuição dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Verifique a TC",
+        "label": 0
+    },
+    {
+        "texto": "Gere um relatório médico em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Os dados estruturados em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Analise esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Os dados estruturados do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Um relatório médico do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Qual é um modelo de regressão para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Monte o prontuário do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Cheque esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Boa tarde",
+        "label": 3
+    },
+    {
+        "texto": "Preciso que você gere uma série temporal do realizado dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Os dados estruturados para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Calcule a distribuição dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Calcule a distribuição no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Oi",
+        "label": 3
+    },
+    {
+        "texto": "Estime o risco preditivo dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Conte uma piada",
+        "label": 3
+    },
+    {
+        "texto": "Como você pode me ajudar?",
+        "label": 3
+    },
+    {
+        "texto": "Os dados estruturados do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Olá, quem é você?",
+        "label": 3
+    },
+    {
+        "texto": "Estime a análise de coorte na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Dê uma olhada em esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Examine o rx verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Verifique este ultrassom para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Examine esta imagem de raio-x para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Monte os dados estruturados do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Cheque o rx",
+        "label": 0
+    },
+    {
+        "texto": "Qual a capital do Brasil?",
+        "label": 3
+    },
+    {
+        "texto": "O prontuário do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Os dados estruturados para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Um resumo clínico para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Faça uma série temporal do realizado dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você faça um modelo de regressão no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Boa tarde",
+        "label": 3
+    },
+    {
+        "texto": "Qual é a média de idade na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Cheque a TC em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Um relatório médico em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Crie os dados estruturados do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Qual a capital do Brasil?",
+        "label": 3
+    },
+    {
+        "texto": "Preciso que você gere o risco preditivo no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Estime a análise de coorte no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Gere o risco preditivo na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Avalie esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Qual é a média de idade dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Um resumo clínico do paciente, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Estime a análise de coorte para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Bom dia, tudo bem?",
+        "label": 3
+    },
+    {
+        "texto": "Preciso que você gere a análise de coorte dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Verifique a TC verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Construa a média de idade no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você gere um modelo de regressão dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Qual é o risco preditivo na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Um resumo clínico para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Exporte o prontuário para o sistema",
+        "label": 2
+    },
+    {
+        "texto": "Dê uma olhada em este ultrassom verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Qual o sentido da vida?",
+        "label": 3
+    },
+    {
+        "texto": "Dê uma olhada em a TC para ver se tem tumor",
+        "label": 0
+    },
+    {
+        "texto": "Avalie esta ressonância magnética para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Qual é a média de idade para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você gere a média de idade dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Um resumo clínico para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Gere o histórico de alta em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Dê uma olhada em este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "O prontuário para o sistema, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Exporte um resumo clínico em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Boa tarde",
+        "label": 3
+    },
+    {
+        "texto": "Oi",
+        "label": 3
+    },
+    {
+        "texto": "Examine esta ressonância magnética para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Qual o sentido da vida?",
+        "label": 3
+    },
+    {
+        "texto": "Avalie o rx",
+        "label": 0
+    },
+    {
+        "texto": "Qual é uma série temporal do realizado na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Gere a análise de coorte para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Verifique este ultrassom",
+        "label": 0
+    },
+    {
+        "texto": "Avalie esta ressonância magnética em busca de anomalias",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você calcule a distribuição na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Gere o prontuário do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Estime a média de idade dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Avalie o rx",
+        "label": 0
+    },
+    {
+        "texto": "Um resumo clínico do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Cheque esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Exporte o prontuário do paciente",
+        "label": 2
+    },
+    {
+        "texto": "Verifique esta ressonância magnética buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você qual é a média de idade dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Construa a análise de coorte no dataframe",
+        "label": 1
+    },
+    {
+        "texto": "Um relatório médico do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Examine esta tomografia buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Crie um resumo clínico em formato texto",
+        "label": 2
+    },
+    {
+        "texto": "Examine esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Conte uma piada",
+        "label": 3
+    },
+    {
+        "texto": "Preciso que você construa um modelo de regressão dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Gere um modelo de regressão dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Dê uma olhada em esta tomografia buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Tudo certo por aqui?",
+        "label": 3
+    },
+    {
+        "texto": "Construa a distribuição para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Os dados estruturados do leito 4, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Dê uma olhada em esta ressonância magnética para identificar lesões",
+        "label": 0
+    },
+    {
+        "texto": "Analise esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você qual é um modelo de regressão dos internados",
+        "label": 1
+    },
+    {
+        "texto": "Os dados estruturados em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você gere a distribuição dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "O histórico de alta em formato texto, por favor",
+        "label": 2
+    },
+    {
+        "texto": "Preciso que você calcule a análise de coorte para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Analise a TC verificando fraturas",
+        "label": 0
+    },
+    {
+        "texto": "Boa tarde",
+        "label": 3
+    },
+    {
+        "texto": "Gere uma série temporal do realizado para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você gere um modelo de regressão para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Examine esta tomografia",
+        "label": 0
+    },
+    {
+        "texto": "Verifique esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Verifique esta imagem de raio-x",
+        "label": 0
+    },
+    {
+        "texto": "Escreva os dados estruturados do leito 4",
+        "label": 2
+    },
+    {
+        "texto": "Avalie a TC buscando nódulos",
+        "label": 0
+    },
+    {
+        "texto": "Examine esta ressonância magnética",
+        "label": 0
+    },
+    {
+        "texto": "Cheque o rx",
+        "label": 0
+    },
+    {
+        "texto": "Preciso que você gere a distribuição para o risco cardiovascular",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você faça um modelo de regressão dos pacientes",
+        "label": 1
+    },
+    {
+        "texto": "Preciso que você qual é um modelo de regressão na base de dados",
+        "label": 1
+    },
+    {
+        "texto": "Analise a TC",
+        "label": 0
+    },
+    {
+        "texto": "Examine o rx buscando nódulos",
+        "label": 0
+    }
+]

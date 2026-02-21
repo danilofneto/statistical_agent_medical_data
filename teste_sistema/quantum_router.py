@@ -13,7 +13,7 @@ class QuantumInspiredRouter(nn.Module):
     Implementação PyTorch da arquitetura QD-LLM para roteamento de agentes.
     Simula o fluxo de informação de um circuito quântico variacional (VQC).
     """
-    def __init__(self, input_dim=768, n_qubits=11, n_layers=2, n_tools=4):
+    def __init__(self, input_dim=768, n_qubits=11, n_layers=8, n_tools=4):
         super(QuantumInspiredRouter, self).__init__()
         
         self.n_qubits = n_qubits
@@ -67,8 +67,10 @@ class QuantumInspiredRouter(nn.Module):
         # Mapeia o estado final para as logits das ferramentas
         logits = self.measurement_layer(state)
         
+        
         # Retorna probabilidades (Softmax)
-        return F.softmax(logits, dim=1)
+        return logits
+        #return F.softmax(logits, dim=1)
 
 # ==============================================================================
 # PARTE 2: AGENTE ORGANIZADOR ATUALIZADO
@@ -76,60 +78,38 @@ class QuantumInspiredRouter(nn.Module):
 
 class AgenteOrganizadorQuantico:
     def __init__(self, embedding_model_name="sentence-transformers/all-mpnet-base-v2"):
-        print(">>> Inicializando Agente Organizador Híbrido...")
-
         
-        # # 1. Carregar modelo de Embedding (para transformar texto em vetor)
-        # # (Em produção, use o mesmo que você usa no FAISS)
-        # try:
-        #     from sentence_transformers import SentenceTransformer
-        #     self.embedder = SentenceTransformer(embedding_model_name)
-        #     self.input_dim = self.embedder.get_sentence_embedding_dimension()
-        # except ImportError:
-        #     raise ImportError("Instale: pip install sentence-transformers")
-
-        # ### CORREÇÃO 1: Detectar se há GPU disponível
+        print(">>> Inicializando Agente Organizador Híbrido...")
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         print(f"   - Dispositivo de processamento: {self.device}")
 
-        # 1. Carregar modelo de Embedding
-        try:
-            from sentence_transformers import SentenceTransformer
-            self.embedder = SentenceTransformer(embedding_model_name)
-            
-            # ### CORREÇÃO 2: Mover o modelo de embedding para o dispositivo correto
-            self.embedder.to(self.device)
-            
-            self.input_dim = self.embedder.get_sentence_embedding_dimension()
-        except ImportError:
-            raise ImportError("Instale: pip install sentence-transformers")
+        from sentence_transformers import SentenceTransformer
+        self.embedder = SentenceTransformer(embedding_model_name)
+        self.embedder.to(self.device)
+        self.input_dim = self.embedder.get_sentence_embedding_dimension()
 
-        # 2. Definição das Ferramentas (Classes de Saída)
         self.tools = [
-            "analise_de_imagem",    # Classe 0
-            "analise_estatistica",  # Classe 1
-            "geracao_de_relatorio", # Classe 2
-            "conversa_geral"        # Classe 3
+            "analise_de_imagem",    # 0
+            "analise_estatistica",  # 1
+            "geracao_de_relatorio", # 2
+            "conversa_geral"        # 3
         ]
         
-        # 3. Instanciar o "Cérebro Quântico"
         self.router_model = QuantumInspiredRouter(
-            input_dim=self.input_dim, 
-            n_qubits=11, 
-            n_layers=4, 
-            n_tools=len(self.tools)
+            input_dim=self.input_dim, n_qubits=11, n_layers=8, n_tools=len(self.tools)
         )
-
-        # ### CORREÇÃO 3: Enviar o modelo PyTorch para a GPU (se disponível)
         self.router_model.to(self.device)
         
+        # CORREÇÃO: Carregar os pesos se o arquivo existir!
+        import os
+        if os.path.exists("pesos_agente_treinado.pth"):
+            print("   - [OK] Carregando pesos treinados...")
+            self.router_model.load_state_dict(torch.load("pesos_agente_treinado.pth", map_location=self.device, weights_only=True))
+        else:
+            print("   - [AVISO] Pesos não encontrados. Rodando de forma aleatória.")
+
         self.router_model.eval()
         print(f"Sistema pronto. Router operando com {self.router_model.n_qubits} qubits virtuais.")
-
-        # NOTA: Em um caso real, você carregaria os pesos treinados aqui.
-        # self.router_model.load_state_dict(torch.load("pesos_treinados_qd_llm.pth"))
-        #self.router_model.eval() # Modo de inferência
-        #print(f"Sistema pronto. Router operando com {self.router_model.n_qubits} qubits virtuais.")
 
     def extrair_parametros_com_llm(self, prompt, tool_name):
         """
@@ -138,6 +118,29 @@ class AgenteOrganizadorQuantico:
         """
         # Simulação para o exemplo (aqui você chamaria o Ollama se quisesse extrair dados)
         return {"raw_prompt": prompt, "status": "extraido_via_llm_lite"}
+    
+    def rotear_prompt(self, user_prompt: str):
+        embedding_vector = self.embedder.encode(user_prompt, convert_to_tensor=True).to(self.device).unsqueeze(0)
+        
+        with torch.no_grad():
+            # CORREÇÃO: Como a rede agora retorna logits puros, aplicamos o Softmax aqui
+            logits = self.router_model(embedding_vector)
+            probabilities = torch.nn.functional.softmax(logits, dim=1)
+            
+            # (Opcional) Print do estado reduzido
+            vetor_reduzido = self.router_model.reduction_layer(embedding_vector)
+            # print(f"   - Estado Reduzido (11 dim): {vetor_reduzido.cpu().numpy()[0][:4]}...")
+        
+        best_tool_idx = torch.argmax(probabilities, dim=1).item()
+        confidence = probabilities[0][best_tool_idx].item()
+        selected_tool = self.tools[best_tool_idx]
+
+        result = {
+            "tool_name": selected_tool,
+            "confidence": confidence,
+            "arguments": self.extrair_parametros_com_llm(user_prompt, selected_tool)
+        }
+        return result
 
     # def rotear_prompt(self, user_prompt: str):
     #     print(f"\n[Input]: '{user_prompt}'")
